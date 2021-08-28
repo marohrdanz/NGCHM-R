@@ -9,8 +9,8 @@ articles:
   continuous-color-maps-and-data-layers: continuous-color-maps-and-data-layers.html
   covariate-bars-and-discrete-color-maps: covariate-bars-and-discrete-color-maps.html
   create-a-ng-chm: create-a-ng-chm.html
-last_built: 2021-08-28T00:07Z
+last_built: 2021-08-28T00:27Z
 urls:
-  reference: https://md-anderson-bioinformatics.github.io/NGCHM-R//reference
-  article: https://md-anderson-bioinformatics.github.io/NGCHM-R//articles
+  reference: https://marohrdanz/NGCHM-R//reference
+  article: https://marohrdanz/NGCHM-R//articles
 
