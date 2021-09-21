@@ -19,6 +19,12 @@
     <loc>https://marohrdanz.github.io/NGCHM-R//reference/cash-.shaidyRepo.html</loc>
   </url>
   <url>
+    <loc>https://marohrdanz.github.io/NGCHM-R//reference/castAsInteger.html</loc>
+  </url>
+  <url>
+    <loc>https://marohrdanz.github.io/NGCHM-R//reference/castListAsInteger.html</loc>
+  </url>
+  <url>
     <loc>https://marohrdanz.github.io/NGCHM-R//reference/chmAdd-method.html</loc>
   </url>
   <url>
@@ -155,6 +161,9 @@
   </url>
   <url>
     <loc>https://marohrdanz.github.io/NGCHM-R//reference/chmExportToFile-method.html</loc>
+  </url>
+  <url>
+    <loc>https://marohrdanz.github.io/NGCHM-R//reference/chmExportToHTML-method.html</loc>
   </url>
   <url>
     <loc>https://marohrdanz.github.io/NGCHM-R//reference/chmExportToPDF-method.html</loc>
@@ -322,6 +331,9 @@
     <loc>https://marohrdanz.github.io/NGCHM-R//reference/chmStringopFunction.html</loc>
   </url>
   <url>
+    <loc>https://marohrdanz.github.io/NGCHM-R//reference/chmTreeGaps.html</loc>
+  </url>
+  <url>
     <loc>https://marohrdanz.github.io/NGCHM-R//reference/chmUninstall-method.html</loc>
   </url>
   <url>
@@ -341,6 +353,9 @@
   </url>
   <url>
     <loc>https://marohrdanz.github.io/NGCHM-R//reference/gitHashObject.html</loc>
+  </url>
+  <url>
+    <loc>https://marohrdanz.github.io/NGCHM-R//reference/initLogging.html</loc>
   </url>
   <url>
     <loc>https://marohrdanz.github.io/NGCHM-R//reference/ngchm-class.html</loc>
@@ -520,6 +535,9 @@
     <loc>https://marohrdanz.github.io/NGCHM-R//reference/ngchmValueProp-class.html</loc>
   </url>
   <url>
+    <loc>https://marohrdanz.github.io/NGCHM-R//reference/ngchmVersion2-class.html</loc>
+  </url>
+  <url>
     <loc>https://marohrdanz.github.io/NGCHM-R//reference/optDendrogram-class.html</loc>
   </url>
   <url>
@@ -592,7 +610,13 @@
     <loc>https://marohrdanz.github.io/NGCHM-R//reference/shaidyRepoAPI.html</loc>
   </url>
   <url>
+    <loc>https://marohrdanz.github.io/NGCHM-R//reference/treeCuts-class.html</loc>
+  </url>
+  <url>
     <loc>https://marohrdanz.github.io/NGCHM-R//reference/validateNewLayer.html</loc>
+  </url>
+  <url>
+    <loc>https://marohrdanz.github.io/NGCHM-R//reference/verifyNumeric.html</loc>
   </url>
   <url>
     <loc>https://marohrdanz.github.io/NGCHM-R//reference/writeTile.html</loc>
