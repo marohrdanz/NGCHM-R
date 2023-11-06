@@ -567,11 +567,13 @@ chmNewDataLayer <- function (label, data, colors, summarizationMethod, cuts_colo
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' data(TCGA.GBM.Demo, package='NGCHMDemoData');
 #' matrix <- TCGA.GBM.ExpressionData[1:50,1:50];
 #' hm <- chmNew ('New Heat Map') + chmNewDataLayer ('Layer 1', matrix);
 #' layer <- chmLayer (hm, "Layer 1");
 #' layercopy <- chmLayer (hm, 1);
+#' }
 #'
 #' @seealso [ngchmLayer-class]
 #'
@@ -626,11 +628,13 @@ chmLayer <- function (hm, label) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' data(TCGA.GBM.Demo, package='NGCHMDemoData');
 #' matrix <- TCGA.GBM.ExpressionData[1:50,1:50];
 #' hm <- chmNew ('New Heat Map');
 #' chmLayer (hm, "Layer 1") <- matrix;
 #' chmLayer (hm, 1, cuts_color = "#fefefe") <- chmNewDataLayer ("New data layer", matrix+1);
+#' }
 #'
 #' @seealso [ngchmLayer-class]
 #' @seealso chmNewDataLayer
@@ -876,11 +880,13 @@ chmNewCovariate <- function (fullname, values, value.properties=NULL, type=NULL,
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' data(TCGA.GBM.Demo, package='NGCHMDemoData');
 #' dataset <- chmNewDataset ("gbmexpr", "TCGA GBM Expression Data", TCGA.GBM.ExpressionData);
 #' dataset <- chmAddCovariate (dataset, "column",
 #'                chmNewCovariate("TP53 Mutation", TCGA.GBM.TP53MutationData));
 #' chmCovariate (dataset, "TP53 Mutation");
+#' }
 #'
 #' @seealso [ngchmCovariate-class]
 #' @seealso chmNewCovariate
@@ -1038,11 +1044,13 @@ ngchmNewBar <- function (label, type, data, colors=NULL, display="visible", thic
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' data(TCGA.GBM.Demo, package='NGCHMDemoData');
 #' hm <- chmNew ("gbmexpr", TCGA.GBM.ExpressionData[1:50,1:50]);
 #' hm <- chmAddCovariateBar (hm, "column",
 #'                chmNewCovariate("TP53 Mutation", TCGA.GBM.TP53MutationData[1:50]));
 #' chmCovariateBar (hm, "TP53 Mutation");
+#' }
 #'
 #' @seealso [ngchmBar-class]
 #' @seealso chmNewCovariateBar
@@ -1548,8 +1556,10 @@ chmLabel <- function (x) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' data(TCGA.GBM.EXPR, package='NGCHMDemoData');
 #' chmColorMap (chmNewDataLayer('New layer', TCGA.GBM.EXPR[1:3,1:3]))
+#' }
 #'
 #' @seealso [chmNewColorMap]
 #'
@@ -1573,9 +1583,11 @@ chmColorMap <- function (x) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' data(TCGA.GBM.EXPR, package='NGCHMDemoData');
 #' dataLayer <- chmNewDataLayer('GBM layer', TCGA.GBM.EXPR[1:30,1:30]);
 #' chmColorMap (dataLayer) <- chmNewColorMap (c(2,14));
+#' }
 #'
 #' @seealso [chmColorMap]
 #'
@@ -1600,8 +1612,10 @@ chmColorMap <- function (x) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' data(TCGA.GBM.EXPR, package='NGCHMDemoData');
 #' chmColors (chmNewDataLayer('New Layer', TCGA.GBM.EXPR[1:50,1:50]))
+#' }
 #'
 #' @seealso [ngchm-class]
 #'
@@ -1621,9 +1635,11 @@ chmColors <- function (x) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' data(TCGA.GBM.EXPR, package='NGCHMDemoData');
 #' layer <- chmNewDataLayer('GBM Layer', TCGA.GBM.EXPR[1:50,1:50])
 #' chmColors (layer) <- c("blue", "white", "red")
+#' }
 #'
 #' @seealso [chmColors]
 #'
@@ -3591,22 +3607,23 @@ writeBinLines <- function(text, con) {
 #' where BASENAME is specified by the parameter basename (default TSNE) and N ranges from 1 to the number of
 #' added covariate bars.
 #'
-#' pointIds is required because [Rtsne::Rtsne()] does not preserve the rownames of the data matrix it was applied to.
+#' pointIds is required because [Rtsne::Rtsne()](https://CRAN.R-project.org/package=Rtsne) does not preserve the rownames of the data matrix it was applied to.
 #' Their values must match those on that axis of the NGCHM, but their order must match those in the data
-#' matrix passed to [Rtsne::Rtsne()].
+#' matrix passed to [Rtsne::Rtsne()](https://CRAN.R-project.org/package=Rtsne).
 #'
 #' @examples
+#' \dontrun{
 #' data(TCGA.GBM.EXPR, package='NGCHMDemoData');
 #' mat <- TCGA.GBM.EXPR[1:50,1:500];
 #' rtc <- Rtsne::Rtsne(t(mat));
 #' hm <- chmNew ("gbm", mat);
 #' hm <- chmAddTSNE(hm, "column", rtc, colnames(mat));
-#'
+#' }
 #' @export
 #'
 #' @param hm The NGCHM to add the coordinates to
 #' @param axis The NGCHM axis ("row" or "column") to add the coordinates to
-#' @param tsne TSNE coordinates (output of [Rtsne::Rtsne()]) for the specified NGCHM axis
+#' @param tsne TSNE coordinates (output of [Rtsne::Rtsne()](https://CRAN.R-project.org/package=Rtsne)) for the specified NGCHM axis
 #' @param pointIds The NGCHM names for the data points in tsne
 #' @param basename The prefix to use for the coordinate names.
 #'
@@ -3645,10 +3662,12 @@ chmAddTSNE <- function (hm, axis, tsne, pointIds, basename = "TSNE") {
 #' parameter basename (default "PC") and N ranges from 1 to the number of added covariate bars.
 #'
 #' @examples
+#' \dontrun{
 #' data(TCGA.GBM.EXPR, package='NGCHMDemoData');
 #' prc <- prcomp(TCGA.GBM.EXPR);
 #' hm <- chmNew ("gbm", TCGA.GBM.EXPR);
 #' hm <- chmAddPCA(hm, "column", prc);
+#' }
 #'
 #' @export
 #'
@@ -3694,17 +3713,19 @@ chmAddPCA <- function (hm, axis, prc, basename = "PC", ndim=2) {
 #' added covariate bars.
 #'
 #' @examples
+#' \dontrun{
 #' data(TCGA.GBM.EXPR, package='NGCHMDemoData');
 #' mat <- TCGA.GBM.EXPR[1:50,1:50];
 #' umc <- umap::umap(t(mat));
 #' hm <- chmNew ("gbm", mat);
 #' hm <- chmAddUMAP(hm, "column", umc);
+#' }
 #'
 #' @export
 #'
 #' @param hm The NGCHM to add the coordinates to.
 #' @param axis The NGCHM axis ("row" or "column") to add the coordinates to.
-#' @param umap TSNE coordinates (output of [umap::umap()]) for the specified NGCHM axis.
+#' @param umap TSNE coordinates (output of [umap::umap()](https://CRAN.R-project.org/package=umap)) for the specified NGCHM axis.
 #' @param basename The prefix to use for the coordinate names.
 #'
 #' @return The NGCHM with added coordinates.
@@ -3741,21 +3762,23 @@ chmAddUMAP <- function (hm, axis, umap, basename = "UMAP") {
 #' where BASENAME is specified by the parameter basename (default UMAP) and N ranges from 1 to the number of
 #' added covariate bars.
 #'
-#' pointIds is required because [uwot::umap()] does not preserve the rownames of the data matrix it was applied to.
+#' pointIds is required because [uwot::umap()](https://CRAN.R-project.org/package=uwot) does not preserve the rownames of the data matrix it was applied to.
 #' Their values must match those on that axis of the NGCHM, but their order must match those in the data
-#' matrix passed to [uwot::umap()].
+#' matrix passed to [uwot::umap()](https://CRAN.R-project.org/package=uwot).
 #'
 #' @examples
+#' \dontrun{
 #' data(TCGA.GBM.EXPR, package='NGCHMDemoData');
 #' umc <- uwot::umap(t(TCGA.GBM.EXPR));
 #' hm <- chmNew ("gbm", TCGA.GBM.EXPR);
 #' hm <- chmAddUWOT(hm, "column", umc, colnames(TCGA.GBM.EXPR));
+#' }
 #'
 #' @export
 #'
 #' @param hm The NGCHM to add the coordinates to.
 #' @param axis The NGCHM axis ("row" or "column") to add the coordinates to.
-#' @param uwot UMAP coordinates (output of [uwot::umap()]) for the specified NGCHM axis.
+#' @param uwot UMAP coordinates (output of [uwot::umap()](https://CRAN.R-project.org/package=uwot)) for the specified NGCHM axis.
 #' @param pointIds The NGCHM names for the data points in uwot
 #' @param basename The prefix to use for the coordinate names.
 #'
@@ -3830,6 +3853,7 @@ getDimensions.default <- function (obj, ...) {
 #' the one described in the preceding paragraph.  This package defines methods for classes `prcomp` and `umap`.
 #'
 #' @examples
+#' \dontrun{
 #' data(TCGA.GBM.EXPR, package='NGCHMDemoData');
 #' mat <- TCGA.GBM.EXPR[1:50,1:50];
 #' prc <- prcomp(mat);
@@ -3838,6 +3862,7 @@ getDimensions.default <- function (obj, ...) {
 #'
 #' umc <- umap::umap (t(mat));
 #' hm <- chmAddReducedDim(hm, "column", umc, "UMAP");
+#' }
 #'
 #' @export
 #'
