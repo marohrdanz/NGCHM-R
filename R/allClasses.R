@@ -1,7 +1,8 @@
-setClass ("dendrogram");
-setClass ("hclust");
-setClass ("file");
-setClass ("fileContent");
+#' @import methods
+setOldClass ("dendrogram");
+setOldClass ("hclust");
+setOldClass ("file");
+setOldClass ("fileContent");
 setOldClass ("singleElement");
 
 #' Optional Dendrogram

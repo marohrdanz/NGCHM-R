@@ -16,7 +16,6 @@ Description: A package for creating Next-Generation Clustered Heat Maps
     containing a Next-Generation Clustered Heat Map and/or .ngchm files to
     view in the NG-CHM viewer.
 License: GPL-3
-URL: https://md-anderson-bioinformatics.github.io/NGCHM-R/
 Depends:
     R (>= 3.4.0)
 Imports:
@@ -41,7 +40,7 @@ Suggests:
     uwot
 VignetteBuilder:
     knitr
-Additional_repositories: https://marohrdanz.github.io/drat
+Additional_repositories: https://marohrdanz.r-universe.dev
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
