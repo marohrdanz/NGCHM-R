@@ -1,5 +1,5 @@
 title: NGCHMR
-url: https://${{ github.repository.owner }}.github.io/NGCHM-R/
+url: https://marohrdanz.github.io/NGCHM-R/
 template:
   params:
     bootswatch: journal
