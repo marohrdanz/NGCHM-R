@@ -32,12 +32,19 @@ Their values must match those on that axis of the NGCHM, but their order must ma
 matrix passed to \href{https://CRAN.R-project.org/package=uwot}{uwot::umap()}.
 }
 \examples{
-\dontrun{
-data(TCGA.GBM.EXPR, package='NGCHMDemoData');
-umc <- uwot::umap(t(TCGA.GBM.EXPR));
-hm <- chmNew ("gbm", TCGA.GBM.EXPR);
-hm <- chmAddUWOT(hm, "column", umc, colnames(TCGA.GBM.EXPR));
+# If the NGCHMDemoData package is installed, use it to demo usage
+if (requireNamespace("NGCHMDemoData", quietly = TRUE)) {
+  data(TCGA.GBM.EXPR, package='NGCHMDemoData')
+  umc <- uwot::umap(t(TCGA.GBM.EXPR[1:50,1:50]))
+  hm <- chmNew ("gbm", TCGA.GBM.EXPR[1:50,1:50])
+  hm <- chmAddUWOT(hm, "column", umc, colnames(TCGA.GBM.EXPR[1:50,1:50]))
 }
+# Small example not requiring NGCHMDemoData
+matrix <- matrix(rnorm(100), nrow = 10, ncol = 10,
+    dimnames = list(paste0("r", 1:10), paste0("c", 1:10)))
+umc <- uwot::umap(t(matrix), n_neighbors = 8)
+hm <- chmNew("Demo UMAP", matrix)
+hm <- chmAddUWOT(hm, "column", umc, colnames(matrix))
 
 }
 \seealso{
