@@ -23,6 +23,9 @@ To start, the demo data, support files, and NGCHM-R package are loaded into the 
 an initial NGCHM of the [demo expression data](create-a-ng-chm.html#sample-ng-chm-data-1) is created with the `chmNew()` function.
 
 ```{r, results='hide', message=FALSE, warning=FALSE}
+if (!requireNamespace("NGCHMDemoData", quietly = TRUE)) {
+  install.packages('NGCHMDemoData', repos = c('https://md-anderson-bioinformatics.r-universe.dev', 'https://cloud.r-project.org'))
+}
 library(NGCHMDemoData)
 library(NGCHM)
 hm <- chmNew('tcga-brca', TCGA.BRCA.ExpressionData)
@@ -45,6 +48,9 @@ hm <- chmAddCovariateBar(hm, 'column', covariateBar)
 This NG-CHM can be exported to either a .ngchm or .html file.
 
 ```{r, results='hide', message=FALSE, warning=FALSE, eval=FALSE}
+if (!requireNamespace("NGCHMSupportFiles", quietly = TRUE)) {
+  install.packages('NGCHMSupportFiles', repos = c('https://md-anderson-bioinformatics.r-universe.dev', 'https://cloud.r-project.org'))
+}
 library(NGCHMSupportFiles)
 chmExportToFile(hm,'tcga-brca-covariates.ngchm')
 chmExportToHTML(hm,'tcga-brca-covariates.html')
@@ -86,6 +92,9 @@ As described in the [Create a NG-CHM](create-a-ng-chm.html) page, this NG-CHM
 can be exported to either a .ngchm or .html file.
 
 ```{r, results='hide', message=FALSE, warning=FALSE}
+if (!requireNamespace("NGCHMSupportFiles", quietly = TRUE)) {
+  install.packages('NGCHMSupportFiles', repos = c('https://md-anderson-bioinformatics.r-universe.dev', 'https://cloud.r-project.org'))
+}
 library(NGCHMSupportFiles)
 chmExportToFile(hm,'tcga-brca-covariates.ngchm')
 chmExportToHTML(hm,'tcga-brca-covariates.html')

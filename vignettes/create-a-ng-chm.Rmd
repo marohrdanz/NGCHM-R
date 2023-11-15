@@ -22,12 +22,15 @@ This vignette uses an additional package of demo data, [NGCHMDemoData](https://g
 which can be installed from GitHub with [remotes](https://cran.r-project.org/package=remotes):
 
 ```{r, results='hide', message=FALSE, warning=FALSE, eval=FALSE}
-remotes::install_github('MD-Anderson-Bioinformatics/NGCHMDemoData', ref='main')
+install.packages('NGCHMDemoData', repos = c('https://md-anderson-bioinformatics.r-universe.dev', 'https://cloud.r-project.org'))
 ```
 
 and loaded into the current environment:
 
 ```{r, results='hide', message=FALSE, warning=FALSE }
+if (!requireNamespace("NGCHMDemoData", quietly = TRUE)) {
+  install.packages('NGCHMDemoData', repos = c('https://md-anderson-bioinformatics.r-universe.dev', 'https://cloud.r-project.org'))
+}
 library(NGCHMDemoData)
 ```
 
@@ -83,6 +86,9 @@ referenced in the [Installation page](Installation.html). When loaded, NGCHMSupp
 sets environment variables pointing to these additional files.
 
 ```{r}
+if (!requireNamespace("NGCHMSupportFiles", quietly = TRUE)) {
+  install.packages('NGCHMSupportFiles', repos = c('https://md-anderson-bioinformatics.r-universe.dev', 'https://cloud.r-project.org'))
+}
 library(NGCHMSupportFiles)
 ```
 

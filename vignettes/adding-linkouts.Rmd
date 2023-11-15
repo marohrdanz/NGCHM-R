@@ -21,6 +21,9 @@ links to NCBI Databases, GeneCards, etc.
 The needed packages are loaded and a basic NG-CHM is constructed from the sample data.
 
 ```{r, results='hide', message=FALSE, warning=FALSE}
+if (!requireNamespace("NGCHMDemoData", quietly = TRUE)) {
+  install.packages('NGCHMDemoData', repos = c('https://md-anderson-bioinformatics.r-universe.dev', 'https://cloud.r-project.org'))
+}
 library(NGCHMDemoData)
 library(NGCHM)
 hm <- chmNew('tcga-brca', TCGA.BRCA.ExpressionData)
@@ -44,6 +47,9 @@ hm <- chmAddAxisType(hm, 'column', 'bio.tcga.barcode.sample.vial.portion.analyte
 Here is the resulting NG-CHM:
 
 ```{r, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+if (!requireNamespace("NGCHMSupportFiles", quietly = TRUE)) {
+  install.packages('NGCHMSupportFiles', repos = c('https://md-anderson-bioinformatics.r-universe.dev', 'https://cloud.r-project.org'))
+}
 library(NGCHMSupportFiles)
 chmExportToHTML(hm,'tcga-brca-with-linkouts.html')
 ```
