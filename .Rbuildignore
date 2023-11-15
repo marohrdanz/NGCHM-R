@@ -8,3 +8,4 @@
 ^index.Rmd$
 ^NGCHM-R.git.Rproj$
 vignettes/*
+pkgdown_before_deploy.R
