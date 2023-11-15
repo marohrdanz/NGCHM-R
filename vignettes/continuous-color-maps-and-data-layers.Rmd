@@ -48,9 +48,6 @@ Data layers can be created with the `chmNewDataLayer()` function. The first argu
 of the data layer. The second argument is the matrix of data, and the third argument is the color map.
 
 ```{r, results='hide', message=FALSE, warning=FALSE}
-if (!requireNamespace("NGCHMDemoData", quietly = TRUE)) {
-  install.packages('NGCHMDemoData', repos = c('https://md-anderson-bioinformatics.r-universe.dev', 'https://cloud.r-project.org'))
-}
 library(NGCHMDemoData)
 unadjustedLayer <- chmNewDataLayer('Unadjusted', TCGA.BRCA.ExpressionData, unadjustedColorMap)
 rowCenteredData <- t(scale(t(TCGA.BRCA.ExpressionData)))
@@ -68,9 +65,6 @@ hm <- chmNew('TCGA BRCA Expression', unadjustedLayer, rowCenteredLayer)
 and export to a .ngchm or .html file:
 
 ```{r, results='hide', message=FALSE, warning=FALSE}
-if (!requireNamespace("NGCHMSupportFiles", quietly = TRUE)) {
-  install.packages('NGCHMSupportFiles', repos = c('https://md-anderson-bioinformatics.r-universe.dev', 'https://cloud.r-project.org'))
-}
 library(NGCHMSupportFiles)
 chmExportToFile(hm,'tcga-brca-two-layers.ngchm')
 chmExportToHTML(hm,'tcga-brca-two-layers.html')

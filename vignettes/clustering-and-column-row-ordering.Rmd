@@ -26,9 +26,6 @@ The following command produces a NG-CHM with rows sorted alphabetically and colu
 
 ```{r, results='hide', message=FALSE, warning=FALSE, eval=FALSE}
 library(NGCHM)
-if (!requireNamespace("NGCHMDemoData", quietly = TRUE)) {
-  install.packages('NGCHMDemoData', repos = c('https://md-anderson-bioinformatics.r-universe.dev', 'https://cloud.r-project.org'))
-}
 library(NGCHMDemoData)
 hm <- chmNew('tcga-brca', TCGA.BRCA.ExpressionData, rowOrder=sort(rownames(TCGA.BRCA.ExpressionData)), colOrder=colnames(TCGA.BRCA.ExpressionData)[ sample.int(length(colnames(TCGA.BRCA.ExpressionData))) ])
 ```
