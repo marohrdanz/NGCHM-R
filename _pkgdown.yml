@@ -1,5 +1,5 @@
 title: NGCHMR
-url: https://md-anderson-bioinformatics.github.io/NGCHM-R/
+url: https://${{ github.repository.owner }}.github.io/NGCHM-R/
 template:
   params:
     bootswatch: journal
