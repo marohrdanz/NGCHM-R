@@ -3,8 +3,6 @@ url: https://md-anderson-bioinformatics.github.io/NGCHM-R/
 template:
   params:
     bootswatch: journal
-before_deploy:
-  - Rscript pkgdown_before_deploy.R
 toc:
   depth: 2
 reference:
