@@ -1,4 +1,4 @@
-pandoc: 2.19.2
+pandoc: 3.1.11
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
@@ -9,8 +9,8 @@ articles:
   continuous-color-maps-and-data-layers: continuous-color-maps-and-data-layers.html
   covariate-bars-and-discrete-color-maps: covariate-bars-and-discrete-color-maps.html
   create-a-ng-chm: create-a-ng-chm.html
-last_built: 2024-01-16T20:12Z
+last_built: 2024-03-22T13:29Z
 urls:
-  reference: https://marohrdanz.github.io/NGCHM-R/reference
-  article: https://marohrdanz.github.io/NGCHM-R/articles
+  reference: https://md-anderson-bioinformatics.github.io/NGCHM-R/reference
+  article: https://md-anderson-bioinformatics.github.io/NGCHM-R/articles
 
