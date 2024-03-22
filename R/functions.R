@@ -160,6 +160,8 @@ ngchmGetEnv <- function() {
 #' Additional parameters will be added to the new NGCHM (see chmAdd).
 #' The bare NGCHM needs at least one data layer added to it before it can be compiled.
 #'
+#' This function requires **git** to be installed.
+#'
 #' @param name The name under which the NGCHM will be saved to the NGCHM server.
 #' @param ... Zero or more initial objects to include in the NGCHM (see chmAdd).
 #' @param rowOrder A vector, dendrogram, or function specifying the CHM row order.
@@ -3718,6 +3720,12 @@ readTile <- function(filename, nrow, ncol) {
 #'
 #' Create a standalone viewer for the NGCHM in the specified file.
 #'
+#' This function requires **Java 11** and the **NGCHMSupportFiles** package. The NGCHMSupportFiles
+#' package can be installed from the R-universe repository: \cr\cr
+#' \code{install.packages('NGCHMDemoData', } \cr
+#' \code{repos = c('https://md-anderson-bioinformatics.r-universe.dev',} \cr
+#' \code{'https://cloud.r-project.org'))}
+#'
 #' @export
 #' @rdname chmExportToFile-method
 #'
@@ -3759,6 +3767,12 @@ chmExportToFile <- function(chm, filename, overwrite = FALSE, shaidyMapGen, shai
 #' Export a PDF of the NGCHM to a file.
 #'
 #' Create a PDF of the NGCHM in the specified file.
+#'
+#' This function requires **Java 11** and the **NGCHMSupportFiles** package. The NGCHMSupportFiles
+#' package can be installed from the R-universe repository: \cr\cr
+#' \code{install.packages('NGCHMDemoData', } \cr
+#' \code{repos = c('https://md-anderson-bioinformatics.r-universe.dev',} \cr
+#' \code{'https://cloud.r-project.org'))}
 #'
 #' @export
 #' @rdname chmExportToPDF-method
@@ -3808,6 +3822,12 @@ chmExportToPDF <- function(chm, filename, overwrite = FALSE, shaidyMapGen, shaid
 #' Export a standalone HTML containing the NGCHM to a file.
 #'
 #' Create a standalone HTML containing the NGCHM in the specified file.
+#'
+#' This function requires **Java 11** and the **NGCHMSupportFiles** package. The NGCHMSupportFiles
+#' package can be installed from the R-universe repository: \cr\cr
+#' \code{install.packages('NGCHMDemoData', } \cr
+#' \code{repos = c('https://md-anderson-bioinformatics.r-universe.dev',} \cr
+#' \code{'https://cloud.r-project.org'))}
 #'
 #' @export
 #' @rdname chmExportToHTML-method
