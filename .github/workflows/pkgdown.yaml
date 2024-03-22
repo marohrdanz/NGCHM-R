@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - myfork
     tags:
       -'*'
   workflow_dispatch:
