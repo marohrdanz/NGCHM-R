@@ -76,3 +76,9 @@ home:
       href: "https://www.youtube.com/@nextgenerationclusteredhea9890"
     - text: "NG-CHM GUI Builder"
       href: "https://build.ngchm.net/NGCHM-web-builder/Select_Matrix.html?v=2.22.0"
+footer:
+  structure:
+    left: developed_by
+    right: ngchmhome
+  components:
+    ngchmhome: "[NG-CHM Home Page](https://bioinformatics.mdanderson.org/public-software/ngchm/)"
