@@ -97,7 +97,7 @@ chmExportToHTML(hm,'tcga-brca-covariates.html', overwrite=TRUE)
 The resulting NG-CHM has both the original covariate bar with the default color map and the covariate bar (of the same data)
 with the cornflowerblue and lightcoral color map:
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, warning=FALSE, message=FALSE}
 library('htmltools')
 filePath = paste(getwd(),'/tcga-brca-covariates.html',sep='')
 htmltools::includeHTML(filePath)

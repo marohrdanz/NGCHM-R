@@ -87,7 +87,7 @@ The resulting NG-CHM has the two data layers available. Click on the
     <use xlink:href="#icon-layers"></use>
 </svg> icon (the first of the 4 buttons on the upper right side) to toggle between the data layers.
 
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library('htmltools')
 filePath = paste(getwd(),'/tcga-brca-two-layers.html',sep='')
 htmltools::includeHTML(filePath)
