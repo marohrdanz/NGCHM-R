@@ -42,6 +42,8 @@ jobs:
 
       - name: Render index.Rmd (landing page for website)
         run: Rscript -e 'rmarkdown::render("index.Rmd", "md_document"); print(sessionInfo())'
+      - name: Render myframe.Rmd (for testing iframe stuff)
+        run: Rscript -e 'setwd("vignettes"); rmarkdown::render("myframe.Rmd", "html_document"); print(sessionInfo())'
 
       - name: Deploy package
         run: |
