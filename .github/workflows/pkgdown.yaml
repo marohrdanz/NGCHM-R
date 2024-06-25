@@ -44,9 +44,11 @@ jobs:
         run: Rscript -e 'rmarkdown::render("index.Rmd", "md_document"); print(sessionInfo())'
       - name: Render myframe.Rmd (for testing iframe stuff)
         run: Rscript -e 'setwd("vignettes"); rmarkdown::render("myframe.Rmd", "html_document"); print(sessionInfo())'
+      - name: Render adding-linkouts.Rmd (for testing iframe stuff)
+        run: Rscript -e 'setwd("vignettes"); rmarkdown::render("adding-linkouts.Rmd", "html_document"); print(sessionInfo())'
 
       - name: Deploy package
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, lazy = TRUE, devel = TRUE)'
