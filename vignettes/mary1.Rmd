@@ -1,0 +1,25 @@
+---
+title: "Mary 1"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Adding Linkouts}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Testing the iframe stuff.
+
+Here's the iframe:
+
+```{r}
+htmltools::tags$iframe(src="myframe.html", width="100%", height="400")
+```
+
+Bottom of page

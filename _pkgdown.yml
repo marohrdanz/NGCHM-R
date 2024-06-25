@@ -57,6 +57,8 @@ navbar:
            href: articles/clustering-and-column-row-ordering.html
          - text: 'Adding Linkouts'
            href: articles/adding-linkouts.html
+         - text: 'testing iframe'
+           href: articles/mary1.html
      - text: 'Function Reference'
        href: reference/index.html
      - text: 'YouTube'
