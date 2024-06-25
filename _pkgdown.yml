@@ -75,12 +75,14 @@ home:
     - text: "YouTube Channel"
       href: "https://www.youtube.com/@nextgenerationclusteredhea9890"
     - text: "NG-CHM GUI Builder"
-      href: "https://build.ngchm.net/NGCHM-web-builder/Select_Matrix.html?v=2.22.0"
+      href: "https://build.ngchm.net/NGCHM-web-builder/Select_Matrix.html"
 authors:
   sidebar:
     roles: [aut, ctb, cre]
 footer:
   structure:
     left: ngchmhome
+    right: guibuilder
   components:
     ngchmhome: "[NG-CHM Home Page](https://bioinformatics.mdanderson.org/public-software/ngchm/)"
+    guibuilder: "[NG-CHM GUI Buillder](https://build.ngchm.net/NGCHM-web-builder/Select_Matrix.html)"

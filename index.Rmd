@@ -24,7 +24,7 @@ Other NG-CHM resources include:
 
 - [NG-CHM Home Page](https://bioinformatics.mdanderson.org/public-software/ngchm/)
 - [YouTube Channel](https://www.youtube.com/@nextgenerationclusteredhea9890)
-- [NG-CHM GUI Builder](https://build.ngchm.net/NGCHM-web-builder/Select_Matrix.html?v=2.22.0) for creating NG-CHMs without programming
+- [NG-CHM GUI Builder](https://build.ngchm.net/NGCHM-web-builder/Select_Matrix.html) for creating NG-CHMs without programming
 
 
 To learn how to create a NG-CHM using this R package, click [Getting Started](articles/create-a-ng-chm.html).
@@ -54,7 +54,7 @@ chmExportToHTML(hm,'tcga-brca-intro.html',overwrite=TRUE)
 ```{r, message=FALSE, warning=FALSE, echo=FALSE}
 library('htmltools')
 filePath = paste(getwd(),'/tcga-brca-intro.html',sep='')
-htmltools::includeHTML(filePath)
+htmltools::tags$iframe(src=filePath, width='100%', height=700)
 ```
 
 
