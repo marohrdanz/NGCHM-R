@@ -17,7 +17,8 @@
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Next Generation Clustered Heat Maps">
+<script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<meta property="og:title" content="Next Generation Clustered Heat Maps">
 <meta property="og:description" content="Next-Generation Clustered Heat Maps (NG-CHMs) allow for dynamic exploration of heat map data in a web browser. NGCHM allows users to create both stand-alone HTML files containing a Next-Generation Clustered Heat Map, and .ngchm files to view in the NG-CHM viewer. See Ryan MC, Stucky M, et al (2020) &lt;doi:10.12688/f1000research.20590.2&gt; for more details.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -81,8 +82,29 @@
 <li>
   <a href="reference/index.html">Function Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Video Tutorials
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
 <li>
-  <a href="articles/YouTube.html">YouTube</a>
+      <a href="https://www.youtube.com/playlist?list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">Playlist: NG-CHMs in R/R-Studio</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=O42w5P3A1_8&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to created a NG-CHM in R-Studio</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=847breSor1I&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to use any ordering method with NG-CHMs</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=K8PuHDQYk-g&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to create a single-cell NG-CHM in R</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=iu0ptg9SBqM&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">Run NG-CHM RStudio container in Windows 10 Docker Desktop</a>
+    </li>
+  </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -112,20 +134,8 @@
   <div class="contents col-md-9">
 
 <p>NGCHM is an R package for creating Next-Generation Clustered Heat Maps (NG-CHMs). NG-CHMs allow for a dynamic exploration of heat map data in a web browser.</p>
-<p>Other NG-CHM resources include:</p>
-<ul>
-<li><a href="https://bioinformatics.mdanderson.org/public-software/ngchm/" class="external-link">NG-CHM Home Page</a></li>
-<li><a href="https://www.youtube.com/@nextgenerationclusteredhea9890" class="external-link">YouTube Channel</a></li>
-<li>
-<a href="https://build.ngchm.net/NGCHM-web-builder/Select_Matrix.html" class="external-link">NG-CHM GUI Builder</a> for creating NG-CHMs without programming</li>
-</ul>
 <p>To learn how to create a NG-CHM using this R package, click <a href="articles/create-a-ng-chm.html">Getting Started</a>.</p>
-<div class="section level3">
-<h3 id="ng-chm-of-breast-cancer-brca-data-from-the-cancer-genome-atlas-tcga">NG-CHM of Breast Cancer (BRCA) Data from The Cancer Genome Atlas (TCGA)<a class="anchor" aria-label="anchor" href="#ng-chm-of-breast-cancer-brca-data-from-the-cancer-genome-atlas-tcga"></a>
-</h3>
-<iframe src="/Users/runner/work/NGCHM-R/NGCHM-R/tcga-brca-intro.html" width="100%" height="700">
-</iframe>
-</div>
+<p>For more information on NG-CHMs, please see the <a href="https://bioinformatics.mdanderson.org/public-software/ngchm/" class="external-link">NG-CHM Home Page</a>.</p>
 
   </div>
 
@@ -135,9 +145,6 @@
 <ul class="list-unstyled">
 <li><a href="https://cloud.r-project.org/package=NGCHM" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/" class="external-link">Browse source code</a></li>
-<li><a href="https://bioinformatics.mdanderson.org/public-software/ngchm/" class="external-link">NG-CHM Home Page</a></li>
-<li><a href="https://www.youtube.com/@nextgenerationclusteredhea9890" class="external-link">YouTube Channel</a></li>
-<li><a href="https://build.ngchm.net/NGCHM-web-builder/Select_Matrix.html" class="external-link">NG-CHM GUI Builder</a></li>
 </ul>
 </div>
 
@@ -145,6 +152,13 @@
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
 <li><a href="authors.html#citation">Citing NGCHM</a></li>
+</ul>
+</div>
+
+<div class="license">
+<h2 data-toc-skip>License</h2>
+<ul class="list-unstyled">
+<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
 </ul>
 </div>
 
@@ -165,12 +179,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p><a href="https://bioinformatics.mdanderson.org/public-software/ngchm/" class="external-link">NG-CHM Home Page</a></p>
+<p>Developed by Bradley M Broom, Mary A Rohrdanz.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p><a href="https://build.ngchm.net/NGCHM-web-builder/Select_Matrix.html" class="external-link">NG-CHM GUI Buillder</a></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>
@@ -179,7 +193,6 @@
   
 
 
-  
-
-  </body>
+  <script> /* open external links in new tab */ (function() { for (const link of document.getElementsByTagName('a')) { if (link.classList.contains('external-link')) link.target = '_blank'; } })(); </script>
+</body>
 </html>
