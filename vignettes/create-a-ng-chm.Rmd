@@ -21,7 +21,16 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette demonstrates how to construct a simple NG-CHM, export it to a file, and embed it into RMarkdown.
+This vignette demonstrates how to create a NG-CHM, export the NG-CHM to a file, and embed the NG-CHM
+into an Rmarkdown document. TCGA breast cancer data (included in the
+[NGCHMDemoData](https://md-anderson-bioinformatics.r-universe.dev/NGCHMDemoData) package),
+is used for this demonstratoin.
+
+**Important:** For use by the NGCHM package, data must be formatted such that:
+
+- The heat map data is a matrix with rownames and colnames
+- The covariate data is a named vector.
+  - For a row/column covariate, at least one name must be in the row/column names of the heat map matrix.
 
 The required packages can be installed with:
 
@@ -32,18 +41,12 @@ install.packages("NGCHMSupportFiles", repos = c("https://md-anderson-bioinformat
 install.packages("htmltools") # used to embed the NG-CHM into RMarkdown
 ```
 
+The code is presented first, followed by a detailed explanation of each step.
+
 ## R Code Example
 
-The following R code demonstrates how to create a NG-CHM from the TCGA breast cancer
-data, export it to a file, and embed it into an Rmarkdown document.
-For use by the NGCHM package, the data must be formatted such that:
-
-- The heat map data is a matrix with rownames and colnames
-- The covariate data is a named vector.
-  - For a row/column covariate, at least one name must be in the row/colnames of the heat map matrix data.
-
-
 ```{r, results='hide', message=FALSE, warning=FALSE, eval=FALSE}
+library(NGCHMDemoData)
 matrix_data_file <- system.file("extdata", "TCGA.BRCA.Expression.csv", package = "NGCHMDemoData")
 matrix_data <- as.matrix(read.csv(matrix_data_file, header = TRUE, row.names = 1, check.names = FALSE))
 covariate_data_file <- system.file("extdata", "TCGA.BRCA.TP53Mutation.csv", package = "NGCHMDemoData")
@@ -66,10 +69,10 @@ htmltools::tags$iframe(src = filePath, width = "100%", height = 700)
 
 ### NGCHMDemoData Package
 
-This vignette uses an additional package of demo data, [NGCHMDemoData](https://github.com/MD-Anderson-Bioinformatics/NGCHMDemoData), 
+This vignette uses the [NGCHMDemoData](https://md-anderson-bioinformatics.r-universe.dev/NGCHMDemoData) package,
 which can be installed from [our R-Universe repository](https://md-anderson-bioinformatics.r-universe.dev/packages).
 
-The sample data includes a matrix of gene expression data containing 3437 genes (rows) and 200 samples
+The NGCHMDemoData includes a matrix of gene expression data containing 3437 genes (rows) and 200 samples
 (columns) of breast cancer data from The Cancer Genome Atlas (TCGA).
 
 
@@ -167,7 +170,7 @@ caption {
 **IMPORTANT: In order to be used as the basis for an NG-CHM, a matrix should have both
 rownames and colnames.**
 
-The sample data also includes a vector of TP35 mutation status for the TCGA samples in the matrix. This
+The NGCHMDemoData also includes a vector of TP35 mutation status for the TCGA samples in the matrix. This
 data will be used to construct a covariate bar.
 
 <table class="mutation-data">
@@ -220,7 +223,7 @@ data will be used to construct a covariate bar.
 
 **IMPORTANT: In order to be used as the basis for a row/column covariate bar,
 the data should be formatted as a named vector with at least one name in common with the
-col/rownames of the matrix.**
+row/column names of the matrix.**
 
 The NGCHMDemoData package includes these datasets as .csv file. The expression data should be
 formatted as a matrix with row and column names.
@@ -265,30 +268,31 @@ hm <- chmAddCovariateBar(hm, "column", covariateBar)
 
 The NG-CHM can be exported to two different file types:
 
-1. An HTML file that can be emailed to collaborators, opened in a web browser, or embedded
+1. **HTML File**: can be emailed to collaborators, opened in a web browser, or embedded
    in an RMarkdown file.
-2. A '.ngchm' file that can be opened in the [NGCHM Viewer]https://www.ngchm.net/Downloads/ngChmApp.html).
+2. **.ngchm File**: can be opened in the [NGCHM Viewer](https://www.ngchm.net/Downloads/ngChmApp.html).
 
-Both methods use files from the [NGCHMSupportFiles](https://github.com/MD-Anderson-Bioinformatics/NGCHMSupportFiles)
+Both methods use files from the
+[NGCHMSupportFiles](https://md-anderson-bioinformatics.r-universe.dev/NGCHMSupportFiles)
 package. When loaded, NGCHMSupportFiles sets environment variables pointing to these additional files.
 
-```{r}
+```{r, message=FALSE}
 library(NGCHMSupportFiles)
 ```
 
-#### 1. Export to HTML
+#### 1. HTML File
 
 The NG-CHM can be exported as an HTML file with the `chmExportToHTML()` function.
 The first argument is the NG-CHM created above. The second argument is the desired filename.
 Here we also use `overwrite=TRUE` to overwrite the file if it already exists.
 
-```{r, results='hide', message=FALSE, warning=FALSE }
+```{r, results='hide', message=FALSE, warning=FALSE}
 chmExportToHTML(hm, "tcga-brca.html", overwrite = TRUE)
 ```
 
 The file 'tcga-brca.html' can be shared with collaborators and opened in a web browser.
 
-#### 2. Export to .ngchm File
+#### 2. .ngchm File
 
 Alternatively, .ngchm file can be created with the `chmExportToFile()` function.
 
@@ -297,8 +301,8 @@ Alternatively, .ngchm file can be created with the `chmExportToFile()` function.
 chmExportToFile(hm, "tcga-brca.ngchm", overwrite = TRUE)
 ```
 
-The file 'tcga-brca.ngchm' can be opened in the [NG-CHM Viewer](https://www.ngchm.net/Downloads/ngChmApp.html).
-**IMPORTANT: The filename must end with '.ngchm' to open in the NG-CHM Viewer**. 
+The file 'tcga-brca.ngchm' can be opened in the NG-CHM Viewer.
+**IMPORTANT: The filename must end with '.ngchm' in order to open in the NG-CHM Viewer**.
 
 
 ### Embed into RMarkdown
