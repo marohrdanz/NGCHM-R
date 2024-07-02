@@ -1,5 +1,11 @@
-/* Use MD Anderson color pallette */
-:root {
+/* Extra CSS to
+
+  - Use MD Anderson color palette
+  - prevent code blocks from wrapping
+
+*/
+
+:root { /* MDA color palette except where noted */
   --blue: #407EC9;
   --darker-blue: #326cb3; /* a few shades darker than MDA blue */
   --purple: #614B79;
@@ -7,6 +13,10 @@
   --green: #789D4A;
   --gray: #63666A;
   --darker-gray:  #3e3f42; /* a few shades darker than MDA gray */
+}
+
+pre>code { /* prevent code blocks from wrapping */
+  white-space: pre !important;
 }
 
 body {

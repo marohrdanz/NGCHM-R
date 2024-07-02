@@ -63,19 +63,16 @@
       <a href="../articles/create-a-ng-chm.html">Create a NG-CHM (Getting Started)</a>
     </li>
     <li>
-      <a href="../articles/covariate-bars-and-discrete-color-maps.html">Covariate Bars and Discrete Color Maps</a>
+      <a href="../articles/color-maps.html">Color Maps</a>
     </li>
     <li>
-      <a href="../articles/continuous-color-maps-and-data-layers.html">Continuous Color Maps and Data Layers</a>
+      <a href="../articles/data-layers.html">Data Layers</a>
     </li>
     <li>
-      <a href="../articles/clustering-and-column-row-ordering.html">Clustering and Column/Row Ordering</a>
+      <a href="../articles/ordering-and-clustering.html">Ordering and Clustering</a>
     </li>
     <li>
       <a href="../articles/adding-linkouts.html">Adding Linkouts</a>
-    </li>
-    <li>
-      <a href="../articles/mary1.html">testing iframe</a>
     </li>
   </ul>
 </li>
@@ -143,35 +140,26 @@
 
     
     
-<p>This vignette demonstrates how to add linkouts to a NG-CHM. Linkouts
-allow for a deeper exploration of the NG-CHM data, for example by
-providing direct links to NCBI Databases, GeneCards, etc.</p>
-<p>The needed packages are loaded and a basic NG-CHM is constructed from
-the sample data.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MD-Anderson-Bioinformatics/NGCHMDemoData" class="external-link">NGCHMDemoData</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://md-anderson-bioinformatics.github.io/NGCHM-R/">NGCHM</a></span><span class="op">)</span></span>
-<span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNew.html">chmNew</a></span><span class="op">(</span><span class="st">'tcga-brca'</span>, <span class="va">TCGA.BRCA.ExpressionData</span><span class="op">)</span></span></code></pre></div>
-<p>To add linkouts, the axis type is specified with
-<code><a href="../reference/chmAddAxisType-method.html">chmAddAxisType()</a></code>. For the demo data in this example, row
-labels correspond to genes, and are specified as HUGO gene symbols:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmAddAxisType-method.html">chmAddAxisType</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">'row'</span>, <span class="st">'bio.gene.hugo'</span><span class="op">)</span></span></code></pre></div>
-<p>The column labels in the demo data are full 28-character TCGA aliquot
-barcodes:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmAddAxisType-method.html">chmAddAxisType</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">'column'</span>, <span class="st">'bio.tcga.barcode.sample.vial.portion.analyte.aliquot'</span><span class="op">)</span></span></code></pre></div>
+<p>Linkouts allow for a deeper exploration of the NG-CHM data by
+providing direct links to NCBI Databases, GeneCards, etc. This vignette
+demonstrates how to add linkouts to a NG-CHM.</p>
+<p>These examples build on the setup from <a href="create-a-ng-chm.html">Create a NG-CHM (Getting Started)</a>.</p>
 <div class="section level2">
-<h2 id="resulting-ng-chm">Resulting NG-CHM<a class="anchor" aria-label="anchor" href="#resulting-ng-chm"></a>
+<h2 id="axis-label-types">Axis Label Types<a class="anchor" aria-label="anchor" href="#axis-label-types"></a>
 </h2>
-<p>Here is the resulting NG-CHM:</p>
-<iframe src="/Users/runner/work/NGCHM-R/NGCHM-R/vignettes/tcga-brca-with-linkouts.html" width="100%" height="700"></iframe>
+<p>To add linkouts, specify the axis type is specified with
+<code><a href="../reference/chmAddAxisType-method.html">chmAddAxisType()</a></code>. For the demo data in this example, row
+labels correspond to genes, and are specified as HUGO gene symbols. The
+column labels are full 28-character TCGA aliquot barcodes.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNew.html">chmNew</a></span><span class="op">(</span><span class="st">"tcga-brca"</span>, <span class="va">matrix_data</span><span class="op">)</span></span>
+<span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmAddAxisType-method.html">chmAddAxisType</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"row"</span>, <span class="st">"bio.gene.hugo"</span><span class="op">)</span></span>
+<span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmAddAxisType-method.html">chmAddAxisType</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"column"</span>, <span class="st">"bio.tcga.barcode.sample.vial.portion.analyte.aliquot"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="available-axis-label-types">Available Axis Label Types<a class="anchor" aria-label="anchor" href="#available-axis-label-types"></a>
 </h2>
-<p>In the above example, the axis type was ‘bio.gene.hugo’. The
-available axis types are:</p>
+<p>The available axis types are:</p>
 <ul>
 <li>
 <strong>bio.gene.entrezid</strong>: NCBI Entrez Gene Identifier</li>
@@ -219,6 +207,14 @@ identifier</li>
 <li>
 <strong>search</strong>: Generic search term</li>
 </ul>
+</div>
+<div class="section level2">
+<h2 id="resulting-ng-chm">Resulting NG-CHM<a class="anchor" aria-label="anchor" href="#resulting-ng-chm"></a>
+</h2>
+<p>Below is the resulting NG-CHM. To access the linkouts, click on the
+row or column labels to select them, then right click on the selection.
+This will open the lable menu, displaying the linkout options.</p>
+<iframe src="linkouts.html" height="800" width="100%"></iframe>
 </div>
   </div>
 
