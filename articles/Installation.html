@@ -49,7 +49,7 @@
   <a href="../articles/Installation.html">Installation</a>
 </li>
 <li>
-  <a href="../articles/create-an-ng-chm.html">Getting Started</a>
+  <a href="../articles/create-a-ng-chm.html">Getting Started</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,16 +59,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/create-an-ng-chm.html">Create an NG-CHM (Getting Started)</a>
+      <a href="../articles/create-a-ng-chm.html">Create a NG-CHM (Getting Started)</a>
     </li>
     <li>
-      <a href="../articles/color-maps.html">Color Maps</a>
+      <a href="../articles/covariate-bars-and-discrete-color-maps.html">Covariate Bars and Discrete Color Maps</a>
     </li>
     <li>
-      <a href="../articles/data-layers.html">Data Layers</a>
+      <a href="../articles/continuous-color-maps-and-data-layers.html">Continuous Color Maps and Data Layers</a>
     </li>
     <li>
-      <a href="../articles/ordering-and-clustering.html">Ordering and Clustering</a>
+      <a href="../articles/clustering-and-column-row-ordering.html">Clustering and Column/Row Ordering</a>
     </li>
     <li>
       <a href="../articles/adding-linkouts.html">Adding Linkouts</a>
@@ -89,7 +89,7 @@
       <a href="https://www.youtube.com/playlist?list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">Playlist: NG-CHMs in R/R-Studio</a>
     </li>
     <li>
-      <a href="https://www.youtube.com/watch?v=O42w5P3A1_8&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to create NG-CHMs in R-Studio</a>
+      <a href="https://www.youtube.com/watch?v=O42w5P3A1_8&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to created a NG-CHM in R-Studio</a>
     </li>
     <li>
       <a href="https://www.youtube.com/watch?v=847breSor1I&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to use any ordering method with NG-CHMs</a>
@@ -132,7 +132,7 @@
       <h1 data-toc-skip>Installation</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/blob/main/vignettes/Installation.Rmd" class="external-link"><code>vignettes/Installation.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/blob/testing/vignettes/Installation.Rmd" class="external-link"><code>vignettes/Installation.Rmd</code></a></small>
       <div class="hidden name"><code>Installation.Rmd</code></div>
 
     </div>
@@ -159,7 +159,7 @@
 </ul>
 </li>
 <li>
-<a href="https://md-anderson-bioinformatics.r-universe.dev/NGCHMSupportFiles" class="external-link">NGCHMSupportFiles</a>
+<a href="https://github.com/MD-Anderson-Bioinformatics/NGCHMSupportFiles" class="external-link">NGCHMSupportFiles</a>
 R package
 <ul>
 <li>This package requires Java &gt;= 11</li>
@@ -174,21 +174,23 @@ file</li>
 </h2>
 <p>The NG-CHM R package can be installed from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"NGCHM"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'NGCHM'</span><span class="op">)</span></span></code></pre></div>
 <p>The NGCHMSupportFiles can be installed from <a href="https://md-anderson-bioinformatics.r-universe.dev/packages" class="external-link">our
 R-Universe repository</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"NGCHMSupportFiles"</span>, repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://md-anderson-bioinformatics.r-universe.dev"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'NGCHMSupportFiles'</span>, repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'https://md-anderson-bioinformatics.r-universe.dev'</span>, <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="docker-image">Docker Image<a class="anchor" aria-label="anchor" href="#docker-image"></a>
+<h2 id="using-the-docker-image">Using the Docker Image<a class="anchor" aria-label="anchor" href="#using-the-docker-image"></a>
 </h2>
-<p>A Docker image containing RStudio, the NGCHM-R package, and all
-needed dependencies is available on Docker Hub: <a href="https://hub.docker.com/r/ngchm/rstudio-ngchm" class="external-link">ngchm/rstudio-ngchm</a>.</p>
-<p>Detailed usage information for the docker image is available in this
-the <a href="https://github.com/MD-Anderson-Bioinformatics/rstudio-ngchm" class="external-link">RStudio
-NGCHM GitHub</a> project, and the YouTube Video, <a href="https://www.youtube.com/watch?v=O42w5P3A1_8" class="external-link">How to Create
-Next-Generation Clustered Heat Maps in R Studio</a>.</p>
+<p>There is also a Docker image, <a href="https://hub.docker.com/r/ngchm/rstudio-ngchm" class="external-link">ngchm/rstudio-ngchm</a>,
+containing RStudio, the NGCHM-R package, and all needed dependencies
+available on Docker Hub.</p>
+<p>The YouTube Video, <a href="https://www.youtube.com/watch?v=O42w5P3A1_8" class="external-link">How to Create
+Next-Generation Clustered Heat Map in R Studio</a> details usage of the
+Docker image. Further installation and usage information is available in
+this the <a href="https://github.com/MD-Anderson-Bioinformatics/rstudio-ngchm" class="external-link">RStudio
+NGCHM GitHub</a> project.</p>
 </div>
   </div>
 
