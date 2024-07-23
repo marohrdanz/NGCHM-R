@@ -8,7 +8,8 @@ articles:
   covariate-bars-and-discrete-color-maps: covariate-bars-and-discrete-color-maps.html
   create-a-ng-chm: create-a-ng-chm.html
   Installation: Installation.html
-last_built: 2024-07-23T17:59Z
+  YouTube: YouTube.html
+last_built: 2024-07-23T18:12Z
 urls:
   reference: https://md-anderson-bioinformatics.github.io/NGCHM-R/reference
   article: https://md-anderson-bioinformatics.github.io/NGCHM-R/articles
