@@ -19,14 +19,13 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Installation">
-<meta property="og:description" content="NGCHM">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -50,17 +49,17 @@
   <a href="../articles/Installation.html">Installation</a>
 </li>
 <li>
-  <a href="../articles/create-a-ng-chm.html">Getting Started</a>
+  <a href="../articles/create-an-ng-chm.html">Getting Started</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Vignettes
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/create-a-ng-chm.html">Create a NG-CHM (Getting Started)</a>
+      <a href="../articles/create-an-ng-chm.html">Create an NG-CHM (Getting Started)</a>
     </li>
     <li>
       <a href="../articles/color-maps.html">Color Maps</a>
@@ -82,7 +81,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Video Tutorials
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -90,7 +89,7 @@
       <a href="https://www.youtube.com/playlist?list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">Playlist: NG-CHMs in R/R-Studio</a>
     </li>
     <li>
-      <a href="https://www.youtube.com/watch?v=O42w5P3A1_8&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to created a NG-CHM in R-Studio</a>
+      <a href="https://www.youtube.com/watch?v=O42w5P3A1_8&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to create NG-CHMs in R-Studio</a>
     </li>
     <li>
       <a href="https://www.youtube.com/watch?v=847breSor1I&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to use any ordering method with NG-CHMs</a>
@@ -108,13 +107,13 @@
 <li>
   <a href="../index.html">
     <span class="fa fa-home"></span>
-     
+
   </a>
 </li>
 <li>
   <a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/" class="external-link">
     <span class="fa fa-github"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -125,7 +124,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
@@ -133,7 +132,7 @@
       <h1 data-toc-skip>Installation</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/blob/HEAD/vignettes/Installation.Rmd" class="external-link"><code>vignettes/Installation.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/blob/main/vignettes/Installation.Rmd" class="external-link"><code>vignettes/Installation.Rmd</code></a></small>
       <div class="hidden name"><code>Installation.Rmd</code></div>
 
     </div>
@@ -179,27 +178,23 @@ file</li>
 <p>The NGCHMSupportFiles can be installed from <a href="https://md-anderson-bioinformatics.r-universe.dev/packages" class="external-link">our
 R-Universe repository</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"NGCHMSupportFiles"</span>, repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://md-anderson-bioinformatics.r-universe.dev"</span>, <span class="st">"https://cloud.r-project.org"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"NGCHMSupportFiles"</span>, repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://md-anderson-bioinformatics.r-universe.dev"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="using-the-docker-image">Using the Docker Image<a class="anchor" aria-label="anchor" href="#using-the-docker-image"></a>
+<h2 id="docker-image">Docker Image<a class="anchor" aria-label="anchor" href="#docker-image"></a>
 </h2>
-<p>There is also a Docker image, <a href="https://hub.docker.com/r/ngchm/rstudio-ngchm" class="external-link">ngchm/rstudio-ngchm</a>,
-containing RStudio, the NGCHM-R package, and all needed dependencies
-available on Docker Hub.</p>
-<p>The YouTube Video, <a href="https://www.youtube.com/watch?v=O42w5P3A1_8" class="external-link">How to Create
-Next-Generation Clustered Heat Map in R Studio</a> details usage of the
-Docker image. Further installation and usage information is available in
-this the <a href="https://github.com/MD-Anderson-Bioinformatics/rstudio-ngchm" class="external-link">RStudio
-NGCHM GitHub</a> project.</p>
+<p>A Docker image containing RStudio, the NGCHM-R package, and all
+needed dependencies is available on Docker Hub: <a href="https://hub.docker.com/r/ngchm/rstudio-ngchm" class="external-link">ngchm/rstudio-ngchm</a>.</p>
+<p>Detailed usage information for the docker image is available in this
+the <a href="https://github.com/MD-Anderson-Bioinformatics/rstudio-ngchm" class="external-link">RStudio
+NGCHM GitHub</a> project, and the YouTube Video, <a href="https://www.youtube.com/watch?v=O42w5P3A1_8" class="external-link">How to Create
+Next-Generation Clustered Heat Maps in R Studio</a>.</p>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
@@ -212,13 +207,13 @@ NGCHM GitHub</a> project.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer>
 </div>
 
-  
+
 
 
   <script> /* open external links in new tab */ (function() { for (const link of document.getElementsByTagName('a')) { if (link.classList.contains('external-link')) link.target = '_blank'; } })(); </script>

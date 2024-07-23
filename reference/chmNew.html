@@ -6,7 +6,7 @@ This function requires git to be installed."><!-- mathjax --><script src="https:
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -29,16 +29,16 @@ This function requires git to be installed."><!-- mathjax --><script src="https:
   <a href="../articles/Installation.html">Installation</a>
 </li>
 <li>
-  <a href="../articles/create-a-ng-chm.html">Getting Started</a>
+  <a href="../articles/create-an-ng-chm.html">Getting Started</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Vignettes
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/create-a-ng-chm.html">Create a NG-CHM (Getting Started)</a>
+      <a href="../articles/create-an-ng-chm.html">Create an NG-CHM (Getting Started)</a>
     </li>
     <li>
       <a href="../articles/color-maps.html">Color Maps</a>
@@ -59,14 +59,14 @@ This function requires git to be installed."><!-- mathjax --><script src="https:
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Video Tutorials
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
       <a href="https://www.youtube.com/playlist?list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">Playlist: NG-CHMs in R/R-Studio</a>
     </li>
     <li>
-      <a href="https://www.youtube.com/watch?v=O42w5P3A1_8&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to created a NG-CHM in R-Studio</a>
+      <a href="https://www.youtube.com/watch?v=O42w5P3A1_8&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to create NG-CHMs in R-Studio</a>
     </li>
     <li>
       <a href="https://www.youtube.com/watch?v=847breSor1I&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to use any ordering method with NG-CHMs</a>
@@ -81,26 +81,26 @@ This function requires git to be installed."><!-- mathjax --><script src="https:
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="../index.html">
     <span class="fa fa-home"></span>
-     
+
   </a>
 </li>
 <li>
   <a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/" class="external-link">
     <span class="fa fa-github"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Create a new NGCHM.</h1>
-    <small class="dont-index">Source: <a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/blob/HEAD/R/functions.R" class="external-link"><code>R/functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/blob/main/R/functions.R" class="external-link"><code>R/functions.R</code></a></small>
     <div class="hidden name"><code>chmNew.Rd</code></div>
     </div>
 
@@ -138,91 +138,91 @@ This function requires <strong>git</strong> to be installed.</p>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>name</dt>
+
+
+<dl><dt id="arg-name">name<a class="anchor" aria-label="anchor" href="#arg-name"></a></dt>
 <dd><p>The name under which the NGCHM will be saved to the NGCHM server.</p></dd>
 
 
-<dt>...</dt>
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Zero or more initial objects to include in the NGCHM (see chmAdd).</p></dd>
 
 
-<dt>rowOrder</dt>
+<dt id="arg-roworder">rowOrder<a class="anchor" aria-label="anchor" href="#arg-roworder"></a></dt>
 <dd><p>A vector, dendrogram, or function specifying the CHM row order.</p></dd>
 
 
-<dt>rowDist</dt>
+<dt id="arg-rowdist">rowDist<a class="anchor" aria-label="anchor" href="#arg-rowdist"></a></dt>
 <dd><p>Distance method to use by default RowOrder</p></dd>
 
 
-<dt>rowAgglom</dt>
+<dt id="arg-rowagglom">rowAgglom<a class="anchor" aria-label="anchor" href="#arg-rowagglom"></a></dt>
 <dd><p>Agglomeration method to use by default RowOrder</p></dd>
 
 
-<dt>colOrder</dt>
+<dt id="arg-colorder">colOrder<a class="anchor" aria-label="anchor" href="#arg-colorder"></a></dt>
 <dd><p>A vector, dendrogram, or function specifying the CHM column order.</p></dd>
 
 
-<dt>colDist</dt>
+<dt id="arg-coldist">colDist<a class="anchor" aria-label="anchor" href="#arg-coldist"></a></dt>
 <dd><p>Distance method to use by default ColOrder</p></dd>
 
 
-<dt>colAgglom</dt>
+<dt id="arg-colagglom">colAgglom<a class="anchor" aria-label="anchor" href="#arg-colagglom"></a></dt>
 <dd><p>Agglomeration method to use by default ColOrder</p></dd>
 
 
-<dt>rowAxisType</dt>
+<dt id="arg-rowaxistype">rowAxisType<a class="anchor" aria-label="anchor" href="#arg-rowaxistype"></a></dt>
 <dd><p>The type(s) of the row labels (default: None).</p></dd>
 
 
-<dt>colAxisType</dt>
+<dt id="arg-colaxistype">colAxisType<a class="anchor" aria-label="anchor" href="#arg-colaxistype"></a></dt>
 <dd><p>The type(s) of the column labels (default: None).</p></dd>
 
 
-<dt>rowCovariates</dt>
+<dt id="arg-rowcovariates">rowCovariates<a class="anchor" aria-label="anchor" href="#arg-rowcovariates"></a></dt>
 <dd><p>Covariate(Bar)(s) to add to the rows (default: None).</p></dd>
 
 
-<dt>colCovariates</dt>
+<dt id="arg-colcovariates">colCovariates<a class="anchor" aria-label="anchor" href="#arg-colcovariates"></a></dt>
 <dd><p>Covariate(Bar)(s) to add to the columns (default: None).</p></dd>
 
 
-<dt>format</dt>
+<dt id="arg-format">format<a class="anchor" aria-label="anchor" href="#arg-format"></a></dt>
 <dd><p>The format of NGCHM to produce (default: 'original').</p></dd>
 
 
-<dt>rowGapLocations</dt>
+<dt id="arg-rowgaplocations">rowGapLocations<a class="anchor" aria-label="anchor" href="#arg-rowgaplocations"></a></dt>
 <dd><p>Locations for row gaps. Specify as a list of integers or <code><a href="chmTreeGaps.html">chmTreeGaps()</a></code> function.</p></dd>
 
 
-<dt>rowGapWidth</dt>
+<dt id="arg-rowgapwidth">rowGapWidth<a class="anchor" aria-label="anchor" href="#arg-rowgapwidth"></a></dt>
 <dd><p>Width of row gaps (default: 5 rows)</p></dd>
 
 
-<dt>colGapLocations</dt>
+<dt id="arg-colgaplocations">colGapLocations<a class="anchor" aria-label="anchor" href="#arg-colgaplocations"></a></dt>
 <dd><p>Locations for col gaps. Specify as a list of integers or <code><a href="chmTreeGaps.html">chmTreeGaps()</a></code> function.</p></dd>
 
 
-<dt>colGapWidth</dt>
+<dt id="arg-colgapwidth">colGapWidth<a class="anchor" aria-label="anchor" href="#arg-colgapwidth"></a></dt>
 <dd><p>Width of col gaps (default: 5 cols)</p></dd>
 
 
-<dt>overview</dt>
+<dt id="arg-overview">overview<a class="anchor" aria-label="anchor" href="#arg-overview"></a></dt>
 <dd><p>The format(s) of overview image(s) to create (default: None).</p></dd>
 
 
-<dt>logLevel</dt>
+<dt id="arg-loglevel">logLevel<a class="anchor" aria-label="anchor" href="#arg-loglevel"></a></dt>
 <dd><p>The level of logs to output</p></dd>
 
 
-<dt>logFile</dt>
+<dt id="arg-logfile">logFile<a class="anchor" aria-label="anchor" href="#arg-logfile"></a></dt>
 <dd><p>The file to which logs should be output</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>An object of class ngchm</p>
+    <p>An object of class ngchm</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -260,12 +260,12 @@ This function requires <strong>git</strong> to be installed.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer></div>
 
-  
+
 
 
   <script> /* open external links in new tab */ (function() { for (const link of document.getElementsByTagName('a')) { if (link.classList.contains('external-link')) link.target = '_blank'; } })(); </script></body></html>

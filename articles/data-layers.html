@@ -19,14 +19,13 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Data Layers">
-<meta property="og:description" content="NGCHM">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -50,17 +49,17 @@
   <a href="../articles/Installation.html">Installation</a>
 </li>
 <li>
-  <a href="../articles/create-a-ng-chm.html">Getting Started</a>
+  <a href="../articles/create-an-ng-chm.html">Getting Started</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Vignettes
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/create-a-ng-chm.html">Create a NG-CHM (Getting Started)</a>
+      <a href="../articles/create-an-ng-chm.html">Create an NG-CHM (Getting Started)</a>
     </li>
     <li>
       <a href="../articles/color-maps.html">Color Maps</a>
@@ -82,7 +81,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Video Tutorials
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -90,7 +89,7 @@
       <a href="https://www.youtube.com/playlist?list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">Playlist: NG-CHMs in R/R-Studio</a>
     </li>
     <li>
-      <a href="https://www.youtube.com/watch?v=O42w5P3A1_8&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to created a NG-CHM in R-Studio</a>
+      <a href="https://www.youtube.com/watch?v=O42w5P3A1_8&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to create NG-CHMs in R-Studio</a>
     </li>
     <li>
       <a href="https://www.youtube.com/watch?v=847breSor1I&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How to use any ordering method with NG-CHMs</a>
@@ -108,13 +107,13 @@
 <li>
   <a href="../index.html">
     <span class="fa fa-home"></span>
-     
+
   </a>
 </li>
 <li>
   <a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/" class="external-link">
     <span class="fa fa-github"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -125,7 +124,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
@@ -133,31 +132,32 @@
       <h1 data-toc-skip>Data Layers</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/blob/HEAD/vignettes/data-layers.Rmd" class="external-link"><code>vignettes/data-layers.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/blob/main/vignettes/data-layers.Rmd" class="external-link"><code>vignettes/data-layers.Rmd</code></a></small>
       <div class="hidden name"><code>data-layers.Rmd</code></div>
 
     </div>
 
     
     
-<p>Data layers are used to display multiple data sets in the same
-NG-CHM. This vignette describes how to create a NG-CHM with multiple
-data layers.</p>
-<p>These examples build on the setup from <a href="create-a-ng-chm.html">Create a NG-CHM (Getting Started)</a>.</p>
+<p>In addition to specifying color maps (see <a href="color-maps.html">Color Maps</a>), data layers allow for displaying
+multiple data sets in the same NG-CHM. This vignette describes how to
+create an NG-CHM with multiple data layers.</p>
+<p>These examples build on the setup from <a href="create-an-ng-chm.html">Create an NG-CHM (Getting Started)</a>.</p>
 <div class="section level2">
 <h2 id="data-layers">Data Layers<a class="anchor" aria-label="anchor" href="#data-layers"></a>
 </h2>
-<p>A data layer is created with the <code><a href="../reference/chmNewDataLayer.html">chmNewDataLayer()</a></code>
-function. The first argument is the desired name of the data layer, the
-second argument is the matrix of data, and the third argument is the
-color map. The example below creates a color map and a data layer for
-the TCGA BRCA Expression data. See <a href="color-maps.html">Color
-Maps</a> for more information on creating color maps.</p>
+<p>The function <code><a href="../reference/chmNewDataLayer.html">chmNewDataLayer()</a></code> creates a data layer. The
+first argument is the desired name of the data layer, the second
+argument is the matrix of data, and the third argument is the color map.
+The example below creates a color map and a data layer for the TCGA BRCA
+Expression data. See <a href="color-maps.html">Color Maps</a> for more
+information on creating color maps.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dataColorMap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewColorMap.html">chmNewColorMap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6.4</span>, <span class="fl">10</span>, <span class="fl">14</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mediumblue"</span>, <span class="st">"snow"</span>, <span class="st">"firebrick"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">dataLayer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewDataLayer.html">chmNewDataLayer</a></span><span class="op">(</span><span class="st">"Unadjusted"</span>, <span class="va">matrix_data</span>, <span class="va">dataColorMap</span><span class="op">)</span></span></code></pre></div>
-<p>The code block below row centers the data, creates a color map, and
-creates a second data layer for the row-centered data.</p>
+<p>For a second data layer, the data is row centered. The code block
+below row-centers the data, creates a color map, and creates a second
+data layer for the row-centered data.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rowCenteredData</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">matrix_data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">rowCenteredColorMap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewColorMap.html">chmNewColorMap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#9933ff"</span>, <span class="st">"#f0f0f0"</span>, <span class="st">"#228B22"</span><span class="op">)</span><span class="op">)</span></span>
@@ -165,6 +165,7 @@ creates a second data layer for the row-centered data.</p>
 <p>The NG-CHM can then be created with both data layers:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNew.html">chmNew</a></span><span class="op">(</span><span class="st">"TCGA BRCA Expression"</span>, <span class="va">dataLayer</span>, <span class="va">rowCenteredLayer</span><span class="op">)</span></span></code></pre></div>
+<p><a href="#">Back to top</a></p>
 </div>
 <div class="section level2">
 <h2 id="resulting-ng-chm">Resulting NG-CHM<a class="anchor" aria-label="anchor" href="#resulting-ng-chm"></a>
@@ -186,7 +187,8 @@ creates a second data layer for the row-centered data.</p>
 <span><span class="va">rowCenteredColorMap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewColorMap.html">chmNewColorMap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#9933ff"</span>, <span class="st">"#f0f0f0"</span>, <span class="st">"#228B22"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">rowCenteredLayer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewDataLayer.html">chmNewDataLayer</a></span><span class="op">(</span><span class="st">"Row-Centered"</span>, <span class="va">rowCenteredData</span>, <span class="va">rowCenteredColorMap</span><span class="op">)</span></span>
 <span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNew.html">chmNew</a></span><span class="op">(</span><span class="st">"TCGA BRCA Expression"</span>, <span class="va">dataLayer</span>, <span class="va">rowCenteredLayer</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/chmExportToHTML-method.html">chmExportToHTML</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"datalayers.html"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/chmExportToHTML-method.html">chmExportToHTML</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"datalayers.html"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">htmltools</span><span class="fu">::</span><span class="va"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">tags</a></span><span class="op">$</span><span class="fu">iframe</span><span class="op">(</span>src <span class="op">=</span> <span class="st">"datalayers.html"</span>, width <span class="op">=</span> <span class="st">"100%"</span>, height <span class="op">=</span> <span class="fl">700</span><span class="op">)</span></span></code></pre></div>
 <!-- svg symbol symbol taken from NG-CHM viewer:
      https://github.com/MD-Anderson-Bioinformatics/NG-CHM/blob/main/NGCHM/WebContent/icons.svg?short_path=fffa0d9
 -->
@@ -195,14 +197,13 @@ between layers, click the
 <svg style="width:16px;height:16px;vertical-align:middle;" viewbox="0 0 20 20"><use xlink:href="#icon-layers"></use></svg> icon (the first of the 4
 buttons on the upper right side).</p>
 <iframe src="datalayers.html" width="100%" height="700"></iframe>
+<p><a href="#">Back to top</a></p>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
@@ -215,13 +216,13 @@ buttons on the upper right side).</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer>
 </div>
 
-  
+
 
 
   <script> /* open external links in new tab */ (function() { for (const link of document.getElementsByTagName('a')) { if (link.classList.contains('external-link')) link.target = '_blank'; } })(); </script>
