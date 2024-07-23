@@ -8,7 +8,7 @@ on:
 
 name: Build documentation website
 
-##
+#
 ## This job:
 ##   - re-renders the index.md file from index.Rmd, 
 ##   - builds pgkdown website
