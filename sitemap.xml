@@ -1,16 +1,15 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/404.html</loc></url>
 <url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/Installation.html</loc></url>
-<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/YouTube.html</loc></url>
 <url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/adding-linkouts.html</loc></url>
-<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/clustering-and-column-row-ordering.html</loc></url>
-<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/continuous-color-maps-and-data-layers.html</loc></url>
-<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/covariate-bars-and-discrete-color-maps.html</loc></url>
-<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/create-a-ng-chm.html</loc></url>
+<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/color-maps.html</loc></url>
+<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/colormap.html</loc></url>
+<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/create-an-ng-chm.html</loc></url>
+<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/data-layers.html</loc></url>
+<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/datalayers.html</loc></url>
 <url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/index.html</loc></url>
-<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/tcga-brca-covariates.html</loc></url>
-<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/tcga-brca-two-layers.html</loc></url>
-<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/tcga-brca-with-linkouts.html</loc></url>
+<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/linkouts.html</loc></url>
+<url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/ordering-and-clustering.html</loc></url>
 <url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/articles/tcga-brca.html</loc></url>
 <url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/authors.html</loc></url>
 <url><loc>https://md-anderson-bioinformatics.github.io/NGCHM-R/index.html</loc></url>
