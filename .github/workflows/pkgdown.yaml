@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - actions_check
   release:
     types: [published]
   workflow_dispatch:
@@ -34,17 +34,7 @@ jobs:
           extra-packages: any::pkgdown, local::.
           needs: website
 
-      - name: Set up JDK for java ${{ env.JAVA_VERSION }}
-        uses: actions/setup-java@v3
-        with:
-          java-version: "${{ env.JAVA_VERSION }}"
-          distribution: 'temurin'
-
       - name: Render index.Rmd (landing page for website)
         run: Rscript -e 'rmarkdown::render("index.Rmd", "md_document"); print(sessionInfo())'
+        run: Rscript -e 'library("rmarkdown"); library("pkgdown"); sessionInfo()'
 
-      - name: Deploy package
-        run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, lazy = TRUE, devel = TRUE)'
