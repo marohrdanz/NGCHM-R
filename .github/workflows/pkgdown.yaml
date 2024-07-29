@@ -35,6 +35,5 @@ jobs:
           needs: website
 
       - name: Render index.Rmd (landing page for website)
-        run: Rscript -e 'rmarkdown::render("index.Rmd", "md_document"); print(sessionInfo())'
         run: Rscript -e 'library("rmarkdown"); library("pkgdown"); sessionInfo()'
 
