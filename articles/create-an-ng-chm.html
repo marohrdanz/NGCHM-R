@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="../index.html">NGCHMR</a>
 
@@ -64,8 +64,15 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home"></span></a></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/"><span class="fa fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
+<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
+  </ul>
+</li>
       </ul>
 </div>
 
@@ -115,9 +122,11 @@ interactive NG-CHM is in the last section, <a href="#resulting-ng-chm">Resulting
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MD-Anderson-Bioinformatics/NGCHMSupportFiles" class="external-link">NGCHMSupportFiles</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://marohrdanz.github.io/NGCHM-R/">NGCHM</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/rstudio/htmltools" class="external-link">"htmltools"</a></span><span class="op">)</span></span>
-<span><span class="va">matrix_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"TCGA.BRCA.Expression.csv"</span>, package <span class="op">=</span> <span class="st">"NGCHMDemoData"</span><span class="op">)</span></span>
+<span><span class="co"># In the command below, replace "&lt;path to your matrix data file&gt;" with the path to your matrix data file</span></span>
+<span><span class="va">matrix_data_file</span> <span class="op">&lt;-</span> <span class="st">"&lt;path to your matrix data file&gt;"</span></span>
 <span><span class="va">matrix_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">matrix_data_file</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, row.names <span class="op">=</span> <span class="fl">1</span>, check.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">covariate_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"TCGA.BRCA.TP53Mutation.csv"</span>, package <span class="op">=</span> <span class="st">"NGCHMDemoData"</span><span class="op">)</span></span>
+<span><span class="co"># in the command below, replace "&lt;path to your covariate data file&gt;" with the path to your covariate data file</span></span>
+<span><span class="va">covariate_data_file</span> <span class="op">&lt;-</span> <span class="st">"&lt;path to your covariate data file&gt;"</span></span>
 <span><span class="va">covariate_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">covariate_data_file</span>, row.names <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># read.csv returns a data.frame</span></span>
 <span><span class="va">covariate_vector</span> <span class="op">&lt;-</span> <span class="va">covariate_data</span><span class="op">$</span><span class="va">MutationState</span> <span class="co"># create vector</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">covariate_vector</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">covariate_data</span><span class="op">)</span> <span class="co"># set the names</span></span>
@@ -409,10 +418,10 @@ formatted as a matrix. The mutation data is read from the
 TCGA.BRCA.TP53Mutation.csv file, and formatted as a named vector.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MD-Anderson-Bioinformatics/NGCHMDemoData" class="external-link">NGCHMDemoData</a></span><span class="op">)</span></span>
-<span><span class="co"># Read in the expression data, and format as a matrix</span></span>
+<span><span class="co"># Read in the NGCHMDemoData expression data, and format as a matrix</span></span>
 <span><span class="va">matrix_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"TCGA.BRCA.Expression.csv"</span>, package <span class="op">=</span> <span class="st">"NGCHMDemoData"</span><span class="op">)</span></span>
 <span><span class="va">matrix_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">matrix_data_file</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, row.names <span class="op">=</span> <span class="fl">1</span>, check.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co"># Read in the mutation data, and format as a named vector</span></span>
+<span><span class="co"># Read in the NGCHMDemoData mutation data, and format as a named vector</span></span>
 <span><span class="va">covariate_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"TCGA.BRCA.TP53Mutation.csv"</span>, package <span class="op">=</span> <span class="st">"NGCHMDemoData"</span><span class="op">)</span></span>
 <span><span class="va">covariate_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">covariate_data_file</span>, row.names <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># read.csv returns a data.frame</span></span>
 <span><span class="va">covariate_vector</span> <span class="op">&lt;-</span> <span class="va">covariate_data</span><span class="op">$</span><span class="va">MutationState</span> <span class="co"># create vector</span></span>
