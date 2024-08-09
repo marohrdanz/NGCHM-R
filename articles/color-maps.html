@@ -112,7 +112,7 @@ those breakpoints. The colors can be specified by name for standard
 colors, or by hexadecimal code.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">colorMap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewColorMap.html">chmNewColorMap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6.4</span>, <span class="fl">10</span>, <span class="fl">14</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"steelblue"</span>, <span class="st">"antiquewhite"</span>, <span class="st">"firebrick"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co"># or with equivalent hexidecimal codes:</span></span>
+<span><span class="co"># or with equivalent hexadecimal codes:</span></span>
 <span><span class="va">colorMap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewColorMap.html">chmNewColorMap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6.4</span>, <span class="fl">10</span>, <span class="fl">14</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#4682B4"</span>, <span class="st">"#FAEBD7"</span>, <span class="st">"#B22222"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>In order to use this color map for matrix data in an NG-CHM, a data
 layer is created with <code><a href="../reference/chmNewDataLayer.html">chmNewDataLayer()</a></code>, and then used in
@@ -128,10 +128,10 @@ layer is created with <code><a href="../reference/chmNewDataLayer.html">chmNewDa
 <p>The same <code><a href="../reference/chmNewColorMap.html">chmNewColorMap()</a></code> function also creates discrete
 color maps. The first argument is a list of the unique values in the
 data, and the second argument is a list of colors. Standard color names
-or hexidecimal codes can be used.</p>
+or hexadecimal codes can be used.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mutationColorMap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewColorMap.html">chmNewColorMap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"WT"</span>, <span class="st">"MUT"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lightsteelblue3"</span>, <span class="st">"khaki3"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">## or with equivalent hexidecimal codes:</span></span>
+<span><span class="co">## or with equivalent hexadecimal codes:</span></span>
 <span><span class="va">mutationColorMap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewColorMap.html">chmNewColorMap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"WT"</span>, <span class="st">"MUT"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#A2B5CD"</span>, <span class="st">"#CDC673"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>In the <code><a href="../reference/chmNewCovariate.html">chmNewCovariate()</a></code> function, an optional third
 argument is a color map:</p>
