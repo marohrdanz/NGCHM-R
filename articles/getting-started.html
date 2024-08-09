@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Create an NG-CHM • NGCHMR</title>
+<title>Getting Started • NGCHMR</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Create an NG-CHM">
+<meta property="og:title" content="Getting Started">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -37,11 +37,11 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="../articles/Installation.html">Installation</a></li>
-<li class="nav-item"><a class="nav-link" href="../articles/create-an-ng-chm.html">Getting Started</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/getting-started.html">Getting Started</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-vignettes" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Vignettes</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-vignettes">
-<li><a class="dropdown-item" href="../articles/create-an-ng-chm.html">Create an NG-CHM (Getting Started)</a></li>
+<li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started</a></li>
     <li><a class="dropdown-item" href="../articles/color-maps.html">Color Maps</a></li>
     <li><a class="dropdown-item" href="../articles/data-layers.html">Data Layers</a></li>
     <li><a class="dropdown-item" href="../articles/ordering-and-clustering.html">Ordering and Clustering</a></li>
@@ -86,11 +86,11 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>Create an NG-CHM</h1>
+      <h1>Getting Started</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/blob/main/vignettes/create-an-ng-chm.Rmd" class="external-link"><code>vignettes/create-an-ng-chm.Rmd</code></a></small>
-      <div class="d-none name"><code>create-an-ng-chm.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/MD-Anderson-Bioinformatics/NGCHM-R/blob/main/vignettes/getting-started.Rmd" class="external-link"><code>vignettes/getting-started.Rmd</code></a></small>
+      <div class="d-none name"><code>getting-started.Rmd</code></div>
     </div>
 
     
@@ -100,10 +100,9 @@
 <li><a href="#format-data-for-ng-chms">Format Data for NG-CHMs</a></li>
 <li><a href="#create-an-ng-chm">Create an NG-CHM</a></li>
 <li><a href="#add-a-covariate-bar">Add a covariate bar</a></li>
-<li><a href="#export-an-ng-chm-to-a-file">Export an NG-CHM to a
-file</a></li>
-<li><a href="#embed-an-ng-chm-into-rmarkdown">Embed an NG-CHM into
-Rmarkdown</a></li>
+<li><a href="#export-to%20html-ngchm-or-pdf">Export to HTML, .ngchm, or
+PDF</a></li>
+<li><a href="#embed-into-rmarkdown">Embed into Rmarkdown</a></li>
 </ul>
 <p>The code block is presented first in <a href="#r-code-example">R Code
 Example</a>, followed by the sections detailing each step. The fully
@@ -128,7 +127,9 @@ interactive NG-CHM is in the last section, <a href="#resulting-ng-chm">Resulting
 <span><span class="co"># in the command below, replace "&lt;path to your covariate data file&gt;" with the path to your covariate data file</span></span>
 <span><span class="va">covariate_data_file</span> <span class="op">&lt;-</span> <span class="st">"&lt;path to your covariate data file&gt;"</span></span>
 <span><span class="va">covariate_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">covariate_data_file</span>, row.names <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># read.csv returns a data.frame</span></span>
-<span><span class="va">covariate_vector</span> <span class="op">&lt;-</span> <span class="va">covariate_data</span><span class="op">$</span><span class="va">MutationState</span> <span class="co"># create vector</span></span>
+<span><span class="co"># in the command below, replace "&lt;covariate column name&gt;" with the name of the column in your covariate data file</span></span>
+<span><span class="va">covariate_column_name</span> <span class="op">&lt;-</span> <span class="st">"&lt;covariate column name&gt;"</span></span>
+<span><span class="va">covariate_vector</span> <span class="op">&lt;-</span> <span class="va">covariate_data</span><span class="op">[[</span><span class="va">covariate_column_name</span><span class="op">]</span><span class="op">]</span> <span class="co"># create vector</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">covariate_vector</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">covariate_data</span><span class="op">)</span> <span class="co"># set the names</span></span>
 <span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNew.html">chmNew</a></span><span class="op">(</span><span class="st">"TCGA BRCA Expression"</span>, <span class="va">matrix_data</span><span class="op">)</span></span>
 <span><span class="va">covariateBar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewCovariate.html">chmNewCovariate</a></span><span class="op">(</span><span class="st">"TP53 Mutation"</span>, <span class="va">covariate_vector</span><span class="op">)</span></span>
@@ -424,7 +425,8 @@ TCGA.BRCA.TP53Mutation.csv file, and formatted as a named vector.</p>
 <span><span class="co"># Read in the NGCHMDemoData mutation data, and format as a named vector</span></span>
 <span><span class="va">covariate_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"TCGA.BRCA.TP53Mutation.csv"</span>, package <span class="op">=</span> <span class="st">"NGCHMDemoData"</span><span class="op">)</span></span>
 <span><span class="va">covariate_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">covariate_data_file</span>, row.names <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># read.csv returns a data.frame</span></span>
-<span><span class="va">covariate_vector</span> <span class="op">&lt;-</span> <span class="va">covariate_data</span><span class="op">$</span><span class="va">MutationState</span> <span class="co"># create vector</span></span>
+<span><span class="va">covariate_column_name</span> <span class="op">&lt;-</span> <span class="st">"MutationState"</span></span>
+<span><span class="va">covariate_vector</span> <span class="op">&lt;-</span> <span class="va">covariate_data</span><span class="op">[[</span><span class="va">covariate_column_name</span><span class="op">]</span><span class="op">]</span> <span class="co"># create vector</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">covariate_vector</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">covariate_data</span><span class="op">)</span> <span class="co"># set the names</span></span></code></pre></div>
 <p><a href="#">Back to top</a></p>
 </div>
@@ -455,7 +457,7 @@ covariate bar object.</p>
 <p><a href="#">Back to top</a></p>
 </div>
 <div class="section level2">
-<h2 id="export-an-ng-chm-to-a-file">Export an NG-CHM to a file<a class="anchor" aria-label="anchor" href="#export-an-ng-chm-to-a-file"></a>
+<h2 id="export-to-html--ngchm-or-pdf">Export to HTML, .ngchm, or PDF<a class="anchor" aria-label="anchor" href="#export-to-html--ngchm-or-pdf"></a>
 </h2>
 <p>The NG-CHM can be exported to two different file types:</p>
 <ol style="list-style-type: decimal">
@@ -474,9 +476,9 @@ pointing to these additional files.</p>
 <div class="section level3">
 <h3 id="html-file">1. HTML File<a class="anchor" aria-label="anchor" href="#html-file"></a>
 </h3>
-<p>The function <code>chmExportToNGCHM()</code> exports the NG-CHM to an
+<p>The function <code><a href="../reference/chmExportToHTML-method.html">chmExportToHTML()</a></code> exports the NG-CHM to an
 HTML file. The first argument is the NG-CHM created above. The second
-argument is the desired filename. The optiohal argument
+argument is the desired filename. The optional argument
 <code>overwrite = TRUE</code> overwrites the file if it already
 exists.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -494,11 +496,35 @@ in a web browser.</p>
 <p>The file ‘tcga-brca.ngchm’ can be opened in the NG-CHM Viewer.
 <strong>IMPORTANT: The filename must end with ‘.ngchm’ in order to open
 in the NG-CHM Viewer</strong>.</p>
+</div>
+<div class="section level3">
+<h3 id="pdf-file">3. PDF File<a class="anchor" aria-label="anchor" href="#pdf-file"></a>
+</h3>
+<p>To create a publication-quality PDF, there are several options:</p>
+<!-- svg symbol symbol taken from NG-CHM viewer:
+     https://github.com/MD-Anderson-Bioinformatics/NG-CHM/blob/main/NGCHM/WebContent/icons.svg?short_path=fffa0d9
+-->
+<svg style="display:none;"><symbol id="icon-menu-button-fill" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-menu-button-fill" viewbox="0 0 16 16"><path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v2A1.5 1.5 0 0 0 1.5 5h8A1.5 1.5 0 0 0 11 3.5v-2A1.5 1.5 0 0 0 9.5 0h-8zm5.927 2.427A.25.25 0 0 1 7.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0l-.396-.396zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"></path></symbol></svg><ol style="list-style-type: decimal">
+<li><p>Create an HTML file <a href="#html-file">as described above</a>.
+Open the file in a web browser and create the view you want to save as a
+PDF (e.g. the detail map zoomed to the desired location, any desired
+rows/columns selected, covariate bars displayed, etc.). Then click the
+<button class="fromViewer">
+<svg style="width:1em;height:1em;vertical-align:middle;" viewbox="0 0 16 16"><use xlink:href="#icon-menu-button-fill"></use></svg></button> button
+(top right corner) and select “Save Heat Map as PDF”.</p></li>
+<li><p>Create a .ngchm file <a href="#ngchm-file">as described
+above</a>. Open the .ngchm file in the <a href="https://tcga.ngchm.net/NGCHM/chm.html" class="external-link">NG-CHM Viewer</a> and
+create the view you want to save as a PDF (e.g. the detail map zoomed to
+the desired location, any desired rows/columns selected, covariate bars
+displayed, etc.). Then click the <button class="fromViewer">
+<svg style="width:1em;height:1em;vertical-align:middle;" viewbox="0 0 16 16"><use xlink:href="#icon-menu-button-fill"></use></svg></button> button
+(top right corner) and select “Save Heat Map as PDF”.</p></li>
+</ol>
 <p><a href="#">Back to top</a></p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="embed-an-ng-chm-into-rmarkdown">Embed an NG-CHM into RMarkdown<a class="anchor" aria-label="anchor" href="#embed-an-ng-chm-into-rmarkdown"></a>
+<h2 id="embed-into-rmarkdown">Embed into RMarkdown<a class="anchor" aria-label="anchor" href="#embed-into-rmarkdown"></a>
 </h2>
 <p>The HTML file can be embedded into RMarkdown as an iframe using
 <code><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">htmltools::tags</a></code>.</p>

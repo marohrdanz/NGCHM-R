@@ -37,11 +37,11 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="../articles/Installation.html">Installation</a></li>
-<li class="nav-item"><a class="nav-link" href="../articles/create-an-ng-chm.html">Getting Started</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/getting-started.html">Getting Started</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-vignettes" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Vignettes</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-vignettes">
-<li><a class="dropdown-item" href="../articles/create-an-ng-chm.html">Create an NG-CHM (Getting Started)</a></li>
+<li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started</a></li>
     <li><a class="dropdown-item" href="../articles/color-maps.html">Color Maps</a></li>
     <li><a class="dropdown-item" href="../articles/data-layers.html">Data Layers</a></li>
     <li><a class="dropdown-item" href="../articles/ordering-and-clustering.html">Ordering and Clustering</a></li>
@@ -100,7 +100,7 @@ NG-CHM, and the additional options available when the ordering is
 hierarchical clustering. The YouTube video <a href="https://www.youtube.com/watch?v=847breSor1I&amp;list=PLIBaINv-Qmd0v2qD4AMbGf85Xd-T_yzEh" class="external-link">How
 to Use Any Label Order or Clustering Method with NG-CHMs</a>, also
 covers these topics.</p>
-<p>These examples build on the setup from <a href="create-an-ng-chm.html">Create an NG-CHM (Getting Started)</a>.</p>
+<p>These examples build on the setup from <a href="getting-started.html">Getting Started</a>.</p>
 <div class="section level2">
 <h2 id="specifying-row-column-order">Specifying Row / Column Order<a class="anchor" aria-label="anchor" href="#specifying-row-column-order"></a>
 </h2>
@@ -112,7 +112,7 @@ function specifying the order of the rows/columns.</p>
 sorted alphabetically and columns ordered randomly:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rowOrder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">matrix_data</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">colOrder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">matirx_data</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample.int</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">matrix_data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">colOrder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">matrix_data</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample.int</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">matrix_data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNew.html">chmNew</a></span><span class="op">(</span><span class="st">"tcga-brca"</span>, <span class="va">matrix_data</span>, rowOrder <span class="op">=</span> <span class="va">rowOrder</span>, colOrder <span class="op">=</span> <span class="va">colOrder</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
