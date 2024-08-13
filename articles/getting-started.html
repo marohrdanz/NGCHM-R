@@ -105,19 +105,45 @@ PDF</a></li>
 <li><a href="#embed-into-rmarkdown">Embed into Rmarkdown</a></li>
 <li><a href="#resulting-ng-chm">Resulting NG-CHM</a></li>
 </ul>
-<p>The complete code block is presented first in <a href="#r-code-example">R Code Example</a>, followed by the sections
+<p>Complete code block examples are presented first in <a href="#r-code-examples">R Code Examples</a>, followed by the sections
 detailing each step. The fully interactive NG-CHM is in the last
 section, <a href="#resulting-ng-chm">Resulting NG-CHM</a>.</p>
-<p>The required packages can be installed with:</p>
+<p>Packages used in these examples can be installed with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"NGCHMDemoData"</span>, repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://md-anderson-bioinformatics.r-universe.dev"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"NGCHMSupportFiles"</span>, repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://md-anderson-bioinformatics.r-universe.dev"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"NGCHM"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"htmltools"</span><span class="op">)</span> <span class="co"># used to embed the NG-CHM into RMarkdown</span></span></code></pre></div>
 <div class="section level2">
-<h2 id="r-code-example">R Code Example<a class="anchor" aria-label="anchor" href="#r-code-example"></a>
+<h2 id="r-code-examples">R Code Examples<a class="anchor" aria-label="anchor" href="#r-code-examples"></a>
 </h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<p>Below are two code examples. The first uses the <a href="https://md-anderson-bioinformatics.r-universe.dev/NGCHMDemoData" class="external-link">NGCHMDemoData</a>
+to create an NG-CHM and export it to HTML and .ngchm files. The second
+performs the same task with generic code containing placeholders for the
+data files, covariate column names, etc.</p>
+<details><summary>
+Click to expand/collapse <strong>code example using
+NGCHMDemoData</strong>
+</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MD-Anderson-Bioinformatics/NGCHMDemoData" class="external-link">NGCHMDemoData</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MD-Anderson-Bioinformatics/NGCHMSupportFiles" class="external-link">NGCHMSupportFiles</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://marohrdanz.github.io/NGCHM-R/">NGCHM</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/rstudio/htmltools" class="external-link">"htmltools"</a></span><span class="op">)</span></span>
+<span><span class="va">matrix_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"TCGA.BRCA.Expression.csv"</span>, package <span class="op">=</span> <span class="st">"NGCHMDemoData"</span><span class="op">)</span></span>
+<span><span class="va">matrix_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">matrix_data_file</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, row.names <span class="op">=</span> <span class="fl">1</span>, check.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">covariate_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"TCGA.BRCA.TP53Mutation.csv"</span>, package <span class="op">=</span> <span class="st">"NGCHMDemoData"</span><span class="op">)</span></span>
+<span><span class="va">covariate_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">covariate_data_file</span>, row.names <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># read.csv returns a data.frame</span></span>
+<span><span class="va">covariate_vector</span> <span class="op">&lt;-</span> <span class="va">covariate_data</span><span class="op">[[</span><span class="st">"MutationState"</span><span class="op">]</span><span class="op">]</span> <span class="co"># create vector</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">covariate_vector</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">covariate_data</span><span class="op">)</span> <span class="co"># set the names</span></span>
+<span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNew.html">chmNew</a></span><span class="op">(</span><span class="st">"TCGA BRCA Expression"</span>, <span class="va">matrix_data</span><span class="op">)</span></span>
+<span><span class="va">covariateBar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewCovariate.html">chmNewCovariate</a></span><span class="op">(</span><span class="st">"TP53 Mutation"</span>, <span class="va">covariate_vector</span><span class="op">)</span></span>
+<span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmAddCovariateBar-method.html">chmAddCovariateBar</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"column"</span>, <span class="va">covariateBar</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/chmExportToHTML-method.html">chmExportToHTML</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"tcga-brca.html"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/chmExportToFile-method.html">chmExportToFile</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"tcga-brca.ngchm"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p><a href="#">Back to top</a></p>
+</details><details><summary>
+Click to expand/collapse <strong>generic code example</strong>
+</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MD-Anderson-Bioinformatics/NGCHMDemoData" class="external-link">NGCHMDemoData</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MD-Anderson-Bioinformatics/NGCHMSupportFiles" class="external-link">NGCHMSupportFiles</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://marohrdanz.github.io/NGCHM-R/">NGCHM</a></span><span class="op">)</span></span>
@@ -129,16 +155,20 @@ section, <a href="#resulting-ng-chm">Resulting NG-CHM</a>.</p>
 <span><span class="va">covariate_data_file</span> <span class="op">&lt;-</span> <span class="st">"&lt;path to your covariate data file&gt;"</span></span>
 <span><span class="va">covariate_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">covariate_data_file</span>, row.names <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># read.csv returns a data.frame</span></span>
 <span><span class="co"># in the command below, replace "&lt;covariate column name&gt;" with the name of the column in your covariate data file</span></span>
-<span><span class="va">covariate_column_name</span> <span class="op">&lt;-</span> <span class="st">"&lt;covariate column name&gt;"</span></span>
-<span><span class="va">covariate_vector</span> <span class="op">&lt;-</span> <span class="va">covariate_data</span><span class="op">[[</span><span class="va">covariate_column_name</span><span class="op">]</span><span class="op">]</span> <span class="co"># create vector</span></span>
+<span><span class="va">covariate_vector</span> <span class="op">&lt;-</span> <span class="va">covariate_data</span><span class="op">[[</span><span class="st">"&lt;covariate column name&gt;"</span><span class="op">]</span><span class="op">]</span> <span class="co"># create vector</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">covariate_vector</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">covariate_data</span><span class="op">)</span> <span class="co"># set the names</span></span>
-<span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNew.html">chmNew</a></span><span class="op">(</span><span class="st">"TCGA BRCA Expression"</span>, <span class="va">matrix_data</span><span class="op">)</span></span>
-<span><span class="va">covariateBar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewCovariate.html">chmNewCovariate</a></span><span class="op">(</span><span class="st">"TP53 Mutation"</span>, <span class="va">covariate_vector</span><span class="op">)</span></span>
+<span><span class="co"># in the command below, replace "&lt;name of your NG-CHM&gt;" with the desired name of your NG-CHM</span></span>
+<span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNew.html">chmNew</a></span><span class="op">(</span><span class="st">"&lt;name of your NG-CHM&gt;"</span>, <span class="va">matrix_data</span><span class="op">)</span></span>
+<span><span class="co"># in the command below, replace "&lt;name of your covariate&gt;" with the desired name of your covariate</span></span>
+<span><span class="va">covariateBar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewCovariate.html">chmNewCovariate</a></span><span class="op">(</span><span class="st">"&lt;name of your covariate&gt;"</span>, <span class="va">covariate_vector</span><span class="op">)</span></span>
 <span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmAddCovariateBar-method.html">chmAddCovariateBar</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"column"</span>, <span class="va">covariateBar</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/chmExportToHTML-method.html">chmExportToHTML</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"tcga-brca.html"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/chmExportToFile-method.html">chmExportToFile</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"tcga-brca.ngchm"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu">htmltools</span><span class="fu">::</span><span class="va"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">tags</a></span><span class="op">$</span><span class="fu">iframe</span><span class="op">(</span>src <span class="op">=</span> <span class="st">"tcga-brca.html"</span>, width <span class="op">=</span> <span class="st">"100%"</span>, height <span class="op">=</span> <span class="fl">700</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># in the command below, replace "&lt;name of your HTML file&gt;" with the desired name of your HTML file</span></span>
+<span><span class="fu"><a href="../reference/chmExportToHTML-method.html">chmExportToHTML</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"&lt;name of your HTML file&gt;"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co"># in the command below, replace "&lt;name of your .ngchm file&gt;" with the desired name of your .ngchm file</span></span>
+<span><span class="co"># IMPORTANT: The filename must end with '.ngchm' in order to open in the NG-CHM Viewer</span></span>
+<span><span class="fu"><a href="../reference/chmExportToFile-method.html">chmExportToFile</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"&lt;namne of your .ngchm file&gt;"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><a href="#">Back to top</a></p>
+</details>
 </div>
 <div class="section level2">
 <h2 id="format-data-for-ng-chms">Format Data for NG-CHMs<a class="anchor" aria-label="anchor" href="#format-data-for-ng-chms"></a>
@@ -418,7 +448,7 @@ the code example, the matrix data is read from the
 TCGA.BRCA.Expression.csv file (in the NGCHMDemoData package), and
 formatted as a matrix. The mutation data is read from the
 TCGA.BRCA.TP53Mutation.csv file, and formatted as a named vector.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MD-Anderson-Bioinformatics/NGCHMDemoData" class="external-link">NGCHMDemoData</a></span><span class="op">)</span></span>
 <span><span class="co"># Read in the NGCHMDemoData expression data, and format as a matrix</span></span>
 <span><span class="va">matrix_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"TCGA.BRCA.Expression.csv"</span>, package <span class="op">=</span> <span class="st">"NGCHMDemoData"</span><span class="op">)</span></span>
@@ -437,7 +467,7 @@ TCGA.BRCA.TP53Mutation.csv file, and formatted as a named vector.</p>
 <p>The <code><a href="../reference/chmNew.html">chmNew()</a></code> function creates the NG-CHM object. The
 first argument is the name of the NG-CHM, and the second argument is the
 matrix data.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://marohrdanz.github.io/NGCHM-R/">NGCHM</a></span><span class="op">)</span></span>
 <span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNew.html">chmNew</a></span><span class="op">(</span><span class="st">"TCGA BRCA Expression"</span>, <span class="va">matrix_data</span><span class="op">)</span></span></code></pre></div>
 <p><a href="#">Back to top</a></p>
@@ -452,7 +482,7 @@ is the named vector of covariate data. The
 NG-CHM. The first argument is the NG-CHM, the second argument is the
 type of covariate bar (‘column’ or ‘row’), and the third argument is the
 covariate bar object.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">covariateBar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewCovariate.html">chmNewCovariate</a></span><span class="op">(</span><span class="st">"TP53 Mutation"</span>, <span class="va">covariate_vector</span><span class="op">)</span></span>
 <span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmAddCovariateBar-method.html">chmAddCovariateBar</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"column"</span>, <span class="va">covariateBar</span><span class="op">)</span></span></code></pre></div>
 <p><a href="#">Back to top</a></p>
@@ -472,7 +502,7 @@ Viewer</a>.</li>
 <p>Both methods use files from the <a href="https://md-anderson-bioinformatics.r-universe.dev/NGCHMSupportFiles" class="external-link">NGCHMSupportFiles</a>
 package. When loaded, NGCHMSupportFiles sets environment variables
 pointing to these additional files.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MD-Anderson-Bioinformatics/NGCHMSupportFiles" class="external-link">NGCHMSupportFiles</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="html-file">1. HTML File<a class="anchor" aria-label="anchor" href="#html-file"></a>
@@ -482,7 +512,7 @@ HTML file. The first argument is the NG-CHM created above. The second
 argument is the desired filename. The optional argument
 <code>overwrite = TRUE</code> overwrites the file if it already
 exists.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/chmExportToHTML-method.html">chmExportToHTML</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"tcga-brca.html"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>The file ‘tcga-brca.html’ can be shared with collaborators and opened
 in a web browser.</p>
@@ -492,7 +522,7 @@ in a web browser.</p>
 </h3>
 <p>Alternatively, <code><a href="../reference/chmExportToFile-method.html">chmExportToFile()</a></code> can be used to create a
 .ngchm file.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/chmExportToFile-method.html">chmExportToFile</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"tcga-brca.ngchm"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>The file ‘tcga-brca.ngchm’ can be opened in the NG-CHM Viewer.
 <strong>IMPORTANT: The filename must end with ‘.ngchm’ in order to open
@@ -529,7 +559,7 @@ displayed, etc.). Then click the <button class="fromViewer">
 </h2>
 <p>The HTML file can be embedded into RMarkdown as an iframe using
 <code><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">htmltools::tags</a></code>.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/rstudio/htmltools" class="external-link">"htmltools"</a></span><span class="op">)</span></span>
 <span><span class="fu">htmltools</span><span class="fu">::</span><span class="va"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">tags</a></span><span class="op">$</span><span class="fu">iframe</span><span class="op">(</span>src <span class="op">=</span> <span class="st">"tcga-brca.html"</span>, width <span class="op">=</span> <span class="st">"100%"</span>, height <span class="op">=</span> <span class="fl">700</span><span class="op">)</span></span></code></pre></div>
 <p><a href="#">Back to top</a></p>
