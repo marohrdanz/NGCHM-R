@@ -106,11 +106,11 @@ fully interactive NG-CHM are shown in <a href="#resulting-ng-chm">Resulting NG-C
 </h2>
 <p>The function <code><a href="../reference/chmNewColorMap.html">chmNewColorMap()</a></code> creates a new color map.
 For a continuous color map, the first argument is a list of breakpoints.
-For the TCGA BRCA Expression demo data, reasonable breakpoints are 6.4,
-10, and 14. The second argument is a corresponding list of colors for
-those breakpoints. Breakpoints must be unique numbers in ascending
-numerical order. The colors can be specified by name for standard
-colors, or by hexadecimal code.</p>
+Breakpoints must be unique numbers in ascending numerical order. For the
+TCGA BRCA Expression demo data, reasonable breakpoints are 6.4, 10, and
+14. The second argument is a corresponding list of colors for those
+breakpoints. The colors can be specified by name for standard colors, or
+by hexadecimal code.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">colorMap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewColorMap.html">chmNewColorMap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6.4</span>, <span class="fl">10</span>, <span class="fl">14</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"steelblue"</span>, <span class="st">"antiquewhite"</span>, <span class="st">"firebrick"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># or with equivalent hexadecimal codes:</span></span>
