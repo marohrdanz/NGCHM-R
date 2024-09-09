@@ -48,16 +48,23 @@
 
   </div>
 </nav><div class="container template-reference-index">
+<!-- this template was taken from
+     https://github.com/r-lib/pkgdown/blob/main/inst/BS5/templates/content-reference-index.html
+     for the purpose of changing the page title from "Package Index" to "Function Reference".
+
+     Extra info: H1 tag in for the reference/index.html is hard-coded in the pkgdown package,
+     so the only way to change it is to use a custom template.
+-->
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>Package index</h1>
+      <h1>Function Reference</h1>
     </div>
 
     <div class="section level2">
       <h2 id="creating-and-saving-an-ng-chm">Creating and Saving an NG-CHM<a class="anchor" aria-label="anchor" href="#creating-and-saving-an-ng-chm"></a></h2>
 
-      <div class="section-desc"><p>Creating an NG-CHM and saving to file</p></div>
+
 
 
     </div><div class="section level2">
@@ -86,7 +93,7 @@
       </dl></div><div class="section level2">
       <h2 id="covariate-bars">Covariate Bars<a class="anchor" aria-label="anchor" href="#covariate-bars"></a></h2>
 
-      <div class="section-desc"><p>Creating and adding covariate bars</p></div>
+
 
 
     </div><div class="section level2">
@@ -96,16 +103,28 @@
 
       <dl><dt>
 
-          <code><a href="chmAddCovariate-method.html">chmAddCovariate()</a></code>
+          <code><a href="chmNewCovariate.html">chmNewCovariate()</a></code>
 
         </dt>
-        <dd>Add a covariate to an auxiliary dataset.</dd>
+        <dd>Create a new Covariate for adding to an NGCHM auxilary dataset.</dd>
       </dl><dl><dt>
 
           <code><a href="chmAddCovariateBar-method.html">chmAddCovariateBar()</a></code>
 
         </dt>
         <dd>Add a covariate bar to a NGCHM.</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmAddCovariate-method.html">chmAddCovariate()</a></code>
+
+        </dt>
+        <dd>Add a covariate to an auxiliary dataset.</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmNewCovariateBar.html">chmNewCovariateBar()</a></code>
+
+        </dt>
+        <dd>Create a new covariate Bar for a NGCHM</dd>
       </dl><dl><dt>
 
           <code><a href="chmCovariate.html">chmCovariate()</a></code>
@@ -118,22 +137,10 @@
 
         </dt>
         <dd>Get a covariate bar attached to an NG-CHM.</dd>
-      </dl><dl><dt>
-
-          <code><a href="chmNewCovariate.html">chmNewCovariate()</a></code>
-
-        </dt>
-        <dd>Create a new Covariate for adding to an NGCHM auxilary dataset.</dd>
-      </dl><dl><dt>
-
-          <code><a href="chmNewCovariateBar.html">chmNewCovariateBar()</a></code>
-
-        </dt>
-        <dd>Create a new covariate Bar for a NGCHM</dd>
       </dl></div><div class="section level2">
-      <h2 id="color-maps-and-data-layers">Color Maps and Data Layers<a class="anchor" aria-label="anchor" href="#color-maps-and-data-layers"></a></h2>
+      <h2 id="colors-and-color-maps">Colors and Color Maps<a class="anchor" aria-label="anchor" href="#colors-and-color-maps"></a></h2>
 
-      <div class="section-desc"><p>Creating color maps and data layers</p></div>
+
 
 
     </div><div class="section level2">
@@ -143,10 +150,16 @@
 
       <dl><dt>
 
-          <code><a href="chmAddLayer-method.html">chmAddLayer()</a></code>
+          <code><a href="chmNewColorMap.html">chmNewColorMap()</a></code>
 
         </dt>
-        <dd>Add a Layer to a NGCHM.</dd>
+        <dd>Create a new Color Map for use in constructing a NGCHM</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmAddColormap-method.html">chmAddColormap()</a></code>
+
+        </dt>
+        <dd>Add a colormap to a NGCHM.</dd>
       </dl><dl><dt>
 
           <code><a href="chmColorMap.html">chmColorMap()</a></code>
@@ -155,22 +168,39 @@
         <dd>Get the color map of an NG-CHM object.</dd>
       </dl><dl><dt>
 
-          <code><a href="chmLayer.html">chmLayer()</a></code>
+          <code><a href="chmColors.html">chmColors()</a></code>
 
         </dt>
-        <dd>Get a specified Data Layer from an NG-CHM.</dd>
-      </dl><dl><dt>
+        <dd>Get the colors of an ngchmColormap, ngchmLayer, ngchmBar, or ngchmCovariate.</dd>
+      </dl></div><div class="section level2">
+      <h2 id="data-layers">Data Layers<a class="anchor" aria-label="anchor" href="#data-layers"></a></h2>
 
-          <code><a href="chmNewColorMap.html">chmNewColorMap()</a></code>
 
-        </dt>
-        <dd>Create a new Color Map for use in constructing a NGCHM</dd>
-      </dl><dl><dt>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
 
           <code><a href="chmNewDataLayer.html">chmNewDataLayer()</a></code>
 
         </dt>
         <dd>Create a new Data Layer for a NGCHM.</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmAddLayer-method.html">chmAddLayer()</a></code>
+
+        </dt>
+        <dd>Add a Layer to a NGCHM.</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmLayer.html">chmLayer()</a></code>
+
+        </dt>
+        <dd>Get a specified Data Layer from an NG-CHM.</dd>
       </dl></div><div class="section level2">
       <h2 id="specifying-axis-type">Specifying Axis Type<a class="anchor" aria-label="anchor" href="#specifying-axis-type"></a></h2>
 
@@ -189,9 +219,137 @@
         </dt>
         <dd>Add an axis type to a NGCHM.</dd>
       </dl></div><div class="section level2">
+      <h2 id="adding-scatter-plot-coordinates">Adding scatter plot coordinates<a class="anchor" aria-label="anchor" href="#adding-scatter-plot-coordinates"></a></h2>
+
+
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="chmAddPCA.html">chmAddPCA()</a></code>
+
+        </dt>
+        <dd>Add PCA coordinates to an NG-CHM.</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmAddUMAP.html">chmAddUMAP()</a></code>
+
+        </dt>
+        <dd>Add UMAP coordinates to an NG-CHM.</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmAddUWOT.html">chmAddUWOT()</a></code>
+
+        </dt>
+        <dd>Add UWOT::UMAP coordinates to an NG-CHM.</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmAddTSNE.html">chmAddTSNE()</a></code>
+
+        </dt>
+        <dd>Add TSNE coordinates to an NG-CHM.</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmAddReducedDim.html">chmAddReducedDim()</a></code>
+
+        </dt>
+        <dd>Add reduced dimension coordinates to an NG-CHM.</dd>
+      </dl></div><div class="section level2">
+      <h2 id="row-and-column-ordering-and-dendrograms">Row and Column Ordering and Dendrograms<a class="anchor" aria-label="anchor" href="#row-and-column-ordering-and-dendrograms"></a></h2>
+
+
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="chmColOrder-method.html">`chmColOrder&lt;-`()</a></code>
+
+        </dt>
+        <dd>Set the column order of data shown in a NGCHM.</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmRowOrder-method.html">`chmRowOrder&lt;-`()</a></code>
+
+        </dt>
+        <dd>Set the row order of data shown in a NGCHM.</dd>
+      </dl></div><div class="section level2">
+      <h2 id="map-properties">Map Properties<a class="anchor" aria-label="anchor" href="#map-properties"></a></h2>
+
+
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="chmHasProperty-method.html">chmHasProperty()</a></code>
+
+        </dt>
+        <dd>Determine if the NG-CHM has the given property.</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmGetProperty-method.html">chmGetProperty()</a></code>
+
+        </dt>
+        <dd>Get Property from NG-CHM</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmNewProperty.html">chmNewProperty()</a></code>
+
+        </dt>
+        <dd>Create a new Property for adding to a NGCHM.</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmAddProperty-method.html">chmAddProperty()</a></code>
+
+        </dt>
+        <dd>Add custom property to a NGCHM.</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmProperty.html">chmProperty()</a></code>
+
+        </dt>
+        <dd>Get the value of an NG-CHM property.</dd>
+      </dl><dl><dt>
+
+          <code><a href="chmProperty-set.html">`chmProperty&lt;-`()</a></code>
+
+        </dt>
+        <dd>Set the value of an NG-CHM property.</dd>
+      </dl></div><div class="section level2">
+      <h2 id="adding-gaps">Adding Gaps<a class="anchor" aria-label="anchor" href="#adding-gaps"></a></h2>
+
+
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="chmTreeGaps.html">chmTreeGaps()</a></code>
+
+        </dt>
+        <dd>Creates new treeCuts object</dd>
+      </dl></div><div class="section level2">
       <h2 id="all-functions">All Functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
 
-      <div class="section-desc"><p>List of all functions</p></div>
+
 
 
     </div><div class="section level2">
