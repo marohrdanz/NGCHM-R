@@ -471,13 +471,13 @@ matrix data.</p>
 <div class="section level2">
 <h2 id="add-a-covariate-bar">Add a Covariate Bar<a class="anchor" aria-label="anchor" href="#add-a-covariate-bar"></a>
 </h2>
-<p>The function <code><a href="../reference/chmNewCovariate.html">chmNewCovariate()</a></code> create a covariate bar.
-The first argument is the name of the covariate, and the second argument
-is the named vector of covariate data. The
-<code><a href="../reference/chmAddCovariateBar-method.html">chmAddCovariateBar()</a></code> function adds the covariate bar to the
+<p>The function <code><a href="../reference/chmNewCovariate.html">chmNewCovariate()</a></code> creates a covariate
+object. The first argument is the name of the covariate, and the second
+argument is the named vector of covariate data. The
+<code><a href="../reference/chmAddCovariateBar-method.html">chmAddCovariateBar()</a></code> function adds the covariate to the
 NG-CHM. The first argument is the NG-CHM, the second argument is the
-type of covariate bar (‘column’ or ‘row’), and the third argument is the
-covariate bar object.</p>
+desired map axis for the covariate bar (‘column’ or ‘row’), and the
+third argument is the covariate object.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">covariateBar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewCovariate.html">chmNewCovariate</a></span><span class="op">(</span><span class="st">"TP53 Mutation"</span>, <span class="va">covariate_vector</span><span class="op">)</span></span>
 <span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmAddCovariateBar-method.html">chmAddCovariateBar</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"column"</span>, <span class="va">covariateBar</span><span class="op">)</span></span></code></pre></div>
