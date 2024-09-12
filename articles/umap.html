@@ -94,32 +94,33 @@
 
     
     
-<p>This vignette demonstrates how to calculate UMAP coordinates, add
-them to an NG-CHM, and explore the interactive features between
-coordinate plots and the NG-CHM via the <a href="https://github.com/MD-Anderson-Bioinformatics/ScatterPlotPlugin" class="external-link">2D
+<p>This vignette demonstrates how to perform uniform manifold
+approximation and projection (UMAP), add the resulting UMAP coordinates
+to an NG-CHM, and explore the interactive features between
+dimensionality reduction plots and the NG-CHM via the <a href="https://github.com/MD-Anderson-Bioinformatics/ScatterPlotPlugin" class="external-link">2D
 Scatter Plot Plugin</a>.</p>
 <div class="section level2">
 <h2 id="umap-coordinates">UMAP coordinates<a class="anchor" aria-label="anchor" href="#umap-coordinates"></a>
 </h2>
-<p>Several R packages exist for calculating UMAP coordinates. This
-example uses <code><a href="https://rdrr.io/pkg/umap/man/umap.html" class="external-link">umap::umap()</a></code>.</p>
 <p>The code block below reads in the <a href="https://md-anderson-bioinformatics.r-universe.dev/NGCHMDemoData" class="external-link">NGCHMDemoData</a>,
-(see <a href="getting-started.html">Getting Started</a> for further
-details), calculates PCA and then UMAP coordinates. A static plot of the
-UMAP coordinates, colored by TP53 mutation state is displayed in Figure
-1.</p>
+performs principal componenta analysis (PCA), and calculates UMAP
+coorinates from the principal components. (See <a href="getting-started.html">Getting Started</a> for details on creating
+NG-CHMs). A static plot of the UMAP coordinates, colored by TP53
+mutation state is displayed in Figure 1.</p>
+<p>PCA was performed first because it yielded better group separation
+compared to performing UMAP on the raw data.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Read in NGCHMDemoData as if preparing to create an NG-CHM</span></span>
+<code class="sourceCode R"><span><span class="co"># Read in NGCHMDemoData (as in the Getting Started vignette)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MD-Anderson-Bioinformatics/NGCHMDemoData" class="external-link">NGCHMDemoData</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Loaded TCGA BRCA demo data</span></span>
 <span><span class="va">matrix_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"TCGA.BRCA.Expression.csv"</span>, package <span class="op">=</span> <span class="st">"NGCHMDemoData"</span><span class="op">)</span></span>
 <span><span class="va">matrix_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">matrix_data_file</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, row.names <span class="op">=</span> <span class="fl">1</span>, check.names <span class="op">=</span> <span class="cn">FALSE</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">covariate_data_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"TCGA.BRCA.TP53Mutation.csv"</span>, package <span class="op">=</span> <span class="st">"NGCHMDemoData"</span><span class="op">)</span></span>
 <span><span class="va">covariate_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">covariate_data_file</span>, row.names <span class="op">=</span> <span class="fl">1</span>, check.names <span class="op">=</span> <span class="cn">FALSE</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="co"># read.csv returns a data.frame</span></span>
 <span><span class="va">covariate_vector</span> <span class="op">&lt;-</span> <span class="va">covariate_data</span><span class="op">[[</span><span class="st">"MutationState"</span><span class="op">]</span><span class="op">]</span> <span class="co"># create vector</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">covariate_vector</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">covariate_data</span><span class="op">)</span> <span class="co"># set the names</span></span>
-<span><span class="co"># Calculate PCA, and use those coordinates to calculate UMAP coordinates</span></span>
+<span><span class="co"># Calculate principal components</span></span>
 <span><span class="va">pca_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">matrix_data</span><span class="op">)</span><span class="op">)</span>, scale <span class="op">=</span> <span class="cn">TRUE</span>, center <span class="op">=</span> <span class="cn">TRUE</span>, rank <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co"># Calculate UMAP from principal components</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tkonopka/umap" class="external-link">umap</a></span><span class="op">)</span></span>
 <span><span class="va">config</span> <span class="op">&lt;-</span> <span class="fu">umap</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/umap/man/umap.defaults.html" class="external-link">umap.defaults</a></span></span>
 <span><span class="va">config</span><span class="op">$</span><span class="va">n_neighbors</span> <span class="op">&lt;-</span> <span class="fl">15</span> <span class="co"># change default for better group separation</span></span>
@@ -128,8 +129,8 @@ UMAP coordinates, colored by TP53 mutation state is displayed in Figure
 Click to expand R code used to create static plot in Figure 1
 </summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">8</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span>, bg <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span>
-<span><span class="va">xlim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">umap_data</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="va">ylim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">umap_data</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">xlim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">umap_data</span><span class="op">$</span><span class="va">layout</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">ylim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">umap_data</span><span class="op">$</span><span class="va">layout</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">xlim</span>, <span class="va">ylim</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"UMAP 1"</span>,</span>
 <span>     ylab <span class="op">=</span> <span class="st">"UMAP 2"</span>,</span>
@@ -137,7 +138,7 @@ Click to expand R code used to create static plot in Figure 1
 <span>     type <span class="op">=</span> <span class="st">"n"</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, yaxt <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span>
 <span><span class="va">labels_for_point_color</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">covariate_vector</span><span class="op">)</span><span class="op">)</span> <span class="co"># "MUT' and "WT"</span></span>
 <span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#f7ef81"</span>, <span class="st">"#ffc2e2"</span><span class="op">)</span> <span class="co"># plot only needs two colors: one for "MUT" and one for "WT"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">umap_data</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">umap_data</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">umap_data</span><span class="op">$</span><span class="va">layout</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">umap_data</span><span class="op">$</span><span class="va">layout</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>,</span>
 <span>       col <span class="op">=</span> <span class="va">colors</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="va">labels_for_point_color</span><span class="op">)</span><span class="op">]</span>,</span>
 <span>       pch <span class="op">=</span> <span class="fl">19</span>, cex <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">xlim</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="op">(</span><span class="va">xlim</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="va">xlim</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.1</span>, <span class="co"># calculate x position for legend</span></span>
@@ -146,45 +147,49 @@ Click to expand R code used to create static plot in Figure 1
 <span>       col <span class="op">=</span> <span class="va">colors</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="va">labels_for_point_color</span><span class="op">)</span><span class="op">]</span>,</span>
 <span>       title <span class="op">=</span> <span class="st">"TP53 Mutation State"</span>,</span>
 <span>       inset <span class="op">=</span> <span class="fl">0.03</span>, xpd <span class="op">=</span> <span class="cn">TRUE</span>, bty <span class="op">=</span> <span class="st">"n"</span>, pch <span class="op">=</span> <span class="fl">19</span>, cex <span class="op">=</span> <span class="fl">0.85</span><span class="op">)</span></span></code></pre></div>
-</details><!-- Two copies of the plotting code so that the diplayed code can be collapsed (in the details tag above)
-    but the plot is always visible
+</details><!-- If we evaluate the code in the details tag, the plot will be hidden when the
+     deails tag is collapsed. So we have two copies of the plotting code: one in the details
+     tag to let the user expand/collapse, and the second hidden but evalluated copy here to
+     always display the plot.
 --><div class="figure">
 <img src="umap_files/figure-html/unnamed-chunk-4-1.png" alt="*Figure 1.* UMAP plot of TCGA BRCA data colored by TP53 mutation state" width="100%"><p class="caption">
 <em>Figure 1.</em> UMAP plot of TCGA BRCA data colored by TP53 mutation
 state
 </p>
 </div>
+<p><a href="#">Back to top</a></p>
 </div>
 <div class="section level2">
 <h2 id="add-umap-to-ng-chm">Add UMAP to NG-CHM<a class="anchor" aria-label="anchor" href="#add-umap-to-ng-chm"></a>
 </h2>
-<p>This section describes how to add the UMAP coordinate to the NG-CHM
-such that they can be explored interactively via the 2D Scatter Plot
-plugin.</p>
+<p>This section describes how to add the UMAP coordinates calculated <a href="#umap-coordinates">above</a> to the NG-CHM such that they can be
+explored interactively via the 2D Scatter Plot plugin.</p>
 <div class="section level3">
 <h3 id="create-an-ng-chm">Create an NG-CHM<a class="anchor" aria-label="anchor" href="#create-an-ng-chm"></a>
 </h3>
 <p>This code block creates an NG-CHM from the data read in above and
 creates a covariate bar for the TP53 mutation state. The colors of the
 TP53 mutation state are chosen to match the colors in the UMAP plot
-above. See <a href="getting-started.html">Getting Started</a> for
-general information on creating NG-CHMs.</p>
+above.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://marohrdanz.github.io/NGCHM-R/">NGCHM</a></span><span class="op">)</span></span>
 <span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNew.html">chmNew</a></span><span class="op">(</span><span class="st">"TCGA BRCA Expression"</span>, <span class="va">matrix_data</span><span class="op">)</span></span>
-<span><span class="va">mutationColorMap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewColorMap.html">chmNewColorMap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MUT"</span>, <span class="st">"WT"</span><span class="op">)</span>, <span class="va">colors</span><span class="op">)</span> <span class="co"># use same colors as in plot above</span></span>
+<span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#f7ef81"</span>, <span class="st">"#ffc2e2"</span><span class="op">)</span> <span class="co"># same colors as in Figure 1</span></span>
+<span><span class="va">mutationColorMap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewColorMap.html">chmNewColorMap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MUT"</span>, <span class="st">"WT"</span><span class="op">)</span>, <span class="va">colors</span><span class="op">)</span></span>
 <span><span class="va">covariateBar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmNewCovariate.html">chmNewCovariate</a></span><span class="op">(</span><span class="st">"TP53 Mutation State"</span>, <span class="va">covariate_vector</span>, <span class="va">mutationColorMap</span><span class="op">)</span></span>
 <span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmAddCovariateBar-method.html">chmAddCovariateBar</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"column"</span>, <span class="va">covariateBar</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="add-umap-coordinates">Add UMAP Coordinates<a class="anchor" aria-label="anchor" href="#add-umap-coordinates"></a>
 </h3>
-<p>UMAP coordinates can be added in a fashion similar to the TP53
-mutation state, but there is also a convenience function for this
-purpose, <code><a href="../reference/chmAddUMAP.html">chmAddUMAP()</a></code>. The code block below uses this
-function.</p>
+<p>The UMAP coordinates are added to the NG-CHM via the convenience
+function <code><a href="../reference/chmAddUMAP.html">chmAddUMAP()</a></code>. Similar functions exist for adding
+PCA, TSNE, etc. See the “Add Scatter Plot Coordinates” section on the <a href="../reference/index.html#add-scatter-plot-coordinates">Function
+Reference</a> page for more details. UMAP coordinates can also be added
+in a fashion similar to the TP53 mutation state.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmAddUMAP.html">chmAddUMAP</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"column"</span>, <span class="va">umap_data</span>, basename <span class="op">=</span> <span class="st">"UMAP"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmAddUMAP.html">chmAddUMAP</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"column"</span>, <span class="va">umap_data</span><span class="op">)</span></span></code></pre></div>
+<p><a href="#">Back to top</a></p>
 </div>
 </div>
 <div class="section level2">
@@ -195,15 +200,15 @@ function.</p>
 -->
 <svg style="display:none;"><symbol id="icon-four-panels" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" viewbox="0 0 16 16"><rect x="0" y="0" width="8" height="8" fill="#e7fffc"></rect><rect x="8" y="0" width="8" height="8" fill="#ffe7e8"></rect><rect x="0" y="8" width="8" height="8" fill="#e7ffe9"></rect><rect x="8" y="8" width="8" height="8" fill="#fffbe7"></rect></symbol><symbol id="icon-gear" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-gear-fill" viewbox="0 0 16 16"><path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"></path></symbol><symbol id="icon-big-x" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 16 16"><path d="m0 0 1 0 7 7 7-7 1 0 0 1-7 7 7 7 0 1 -1 0-7-7-7 7-1 0 0-1 7-7-7-7z"></path></symbol></svg><p>NG-CHMs include several plugins, among them a 2D Scatter Plot to
 allow for interactive exploration of 2-dimensional data. Below are the
-steps to open this plugin and use it to explore the UMAP coordinates.
-<em>It may be helpful to click the “Open NG-CHM in a New Tab” button and
-follow the steps below in the larger space of a new tab.</em></p>
+steps to open this plugin and use it to explore the UMAP
+coordinates.</p>
+<p><em>It may be helpful to click the “Open NG-CHM in a New Tab” button
+below and follow these steps in the larger space of a new tab.</em></p>
 <ol style="list-style-type: decimal">
 <li>In the “Heat Map Summary” panel, click the
 <button class="fromViewer"> <svg class="fromViewer" viewbox="0 0 16 16"><use xlink:href="#icon-four-panels"></use></svg></button> button to
 open the panel menu.</li>
-<li>In the newly opened panel menu, under <span class="ngchm-panel-menu-headings">Panel Control</span>, select “<span class="ngchm-panel-menu">Add Panel Below</span>” to create a new empty
-panel.</li>
+<li>In the newly opened panel menu, under <span class="ngchm-panel-menu-headings">Panel Control</span>, select “<span class="ngchm-panel-menu">Add Panel Below</span>”.</li>
 <li>In the newly created empty panel, click the
 <button class="fromViewer">
 <svg style="width:16px;height:16px;vertical-align:middle;" viewbox="0 0 16 16"><use xlink:href="#icon-four-panels"></use></svg></button> button, and
@@ -214,36 +219,51 @@ automatically open the <button class="fromViewer">
 panel.</li>
 <li>In the newly opened <button class="fromViewer">
 <svg class="fromViewer" viewbox="0 0 16 16"><use xlink:href="#icon-gear"></use></svg></button> menu, keep the
-default choices. The UMAP coordinates are set as the default because of
-the special format of the <em>fullname</em> argument in
-<code><a href="../reference/chmNewCovariate.html">chmNewCovariate()</a></code> (see <a href="#add-umap-coordinates">above</a>).</li>
+default choices.</li>
 <li>At the bottom of the open <button class="fromViewer">
 <svg class="fromViewer" viewbox="0 0 16 16"><use xlink:href="#icon-gear"></use></svg></button> menu, click <span class="ngchm-gear-menu-button">APPLY</span> and then <span class="ngchm-gear-menu-button">CLOSE</span>.</li>
 </ol>
 <p>The UMAP scatter plot should be visible in the lower right panel of
 the NG-CHM display.</p>
-<p>To explore the interactive features between the UMAP plot and the
-NG-CHM, try the following in the 2D ScatterPlot panel:</p>
-<ol style="list-style-type: decimal">
+<p>Here are some suggestions for exploring the interactive features
+between the UMAP plot and the NG-CHM:</p>
+<ul>
+<li>In the 2D Scatter Plot Panel:
+<ul>
 <li>Use the slider to increase the size of the points</li>
 <li>Click the lasso button to enter Lasso/Select mode</li>
-<li>Draw a lasso around the left cluster of points
+<li>Draw a lasso around a cluster of points
 <ul>
 <li>This will select the corresponding columns in the Heat Map Detail
 panel</li>
-<li>Similarly, selecting columns or a column dendrogram in the Heat Map
-Detail panel will highlight the corresponding points in the UMAP
-plot</li>
-<li>Selections can be cleared by clicking
-<button class="viewer-close-icon">
-<svg style="width:16px;height:16px;vertical-align:middle;" viewbox="0 0 16 16"><use xlink:href="#icon-big-x"></use></svg></button> button.</li>
 </ul>
 </li>
-</ol>
+</ul>
+</li>
+<li>In the Heat Map Detail Panel:
+<ul>
+<li>Click on a column dendrogram
+<ul>
+<li>This will highlight the corresponding points in the UMAP plot</li>
+</ul>
+</li>
+<li>Scroll over the Detail Map to zoom enough to see column labels at
+the bottom and click on a column label
+<ul>
+<li>This will highlight the corresponding point in the UMAP plot</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Click the <button class="viewer-close-icon">
+<svg style="width:16px;height:16px;vertical-align:middle;" viewbox="0 0 16 16"><use xlink:href="#icon-big-x"></use></svg></button> button to clear
+selections.</li>
+</ul>
 <button onclick="openIframeInNewTab('#myIframe')" style="margin-bottom:10px">
 Open NG-CHM in New Tab
 </button>
 <iframe src="umapDemo.html" width="100%" height="800px" id="myIframe" class="ngchm-frame"></iframe>
+<p><a href="#">Back to top</a></p>
 </div>
 <div class="section level2">
 <h2 id="further-reading">Further Reading<a class="anchor" aria-label="anchor" href="#further-reading"></a>
