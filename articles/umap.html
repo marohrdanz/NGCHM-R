@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>UMAP Coordinates • NGCHMR</title>
+<title>UMAP • NGCHMR</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="UMAP Coordinates">
+<meta property="og:title" content="UMAP">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -85,7 +85,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>UMAP Coordinates</h1>
+      <h1>UMAP</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/marohrdanz/NGCHM-R/blob/main/vignettes/umap.Rmd" class="external-link"><code>vignettes/umap.Rmd</code></a></small>
@@ -100,11 +100,12 @@ to an NG-CHM, and explore the interactive features between
 dimensionality reduction plots and the NG-CHM via the <a href="https://github.com/MD-Anderson-Bioinformatics/ScatterPlotPlugin" class="external-link">2D
 Scatter Plot Plugin</a>.</p>
 <div class="section level2">
-<h2 id="umap-coordinates">UMAP coordinates<a class="anchor" aria-label="anchor" href="#umap-coordinates"></a>
+<h2 id="uniform-mainfold-approximation-and-projection-umap">Uniform Mainfold Approximation and Projection (UMAP)<a class="anchor" aria-label="anchor" href="#uniform-mainfold-approximation-and-projection-umap"></a>
 </h2>
 <p>The code block below reads in the <a href="https://md-anderson-bioinformatics.r-universe.dev/NGCHMDemoData" class="external-link">NGCHMDemoData</a>,
 performs principal component analysis (PCA), and calculates UMAP
-coordinates from the principal components. (See <a href="getting-started.html">Getting Started</a> for details on creating
+coordinates from the principal components. This vignette uses the <a href="https://cran.r-project.org/package=umap" class="external-link">umap R package</a> which
+must be installed in order to run the code below. (See <a href="getting-started.html">Getting Started</a> for details on creating
 NG-CHMs). A static plot of the UMAP coordinates, colored by TP53
 mutation state is displayed in Figure 1.</p>
 <p>PCA was performed first because it yielded better group separation
@@ -124,11 +125,13 @@ compared to performing UMAP on the raw data.</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tkonopka/umap" class="external-link">umap</a></span><span class="op">)</span></span>
 <span><span class="va">config</span> <span class="op">&lt;-</span> <span class="fu">umap</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/umap/man/umap.defaults.html" class="external-link">umap.defaults</a></span></span>
 <span><span class="va">config</span><span class="op">$</span><span class="va">n_neighbors</span> <span class="op">&lt;-</span> <span class="fl">15</span> <span class="co"># change default for better group separation</span></span>
+<span><span class="va">config</span><span class="op">$</span><span class="va">random_state</span> <span class="op">&lt;-</span> <span class="fl">123</span> <span class="co"># set random state for reproducibility</span></span>
 <span><span class="va">umap_data</span> <span class="op">&lt;-</span> <span class="fu">umap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/umap/man/umap.html" class="external-link">umap</a></span><span class="op">(</span><span class="va">pca_data</span><span class="op">$</span><span class="va">x</span>, config <span class="op">=</span> <span class="va">config</span><span class="op">)</span></span></code></pre></div>
 <details><summary>
 Click to expand R code used to create static plot in Figure 1
 </summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">8</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span>, bg <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># Create static plot of UMAP coordinates colored by TP53 mutation state</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">8</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span>, bg <span class="op">=</span> <span class="st">"white"</span>, mgp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">xlim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">umap_data</span><span class="op">$</span><span class="va">layout</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">ylim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">umap_data</span><span class="op">$</span><span class="va">layout</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">xlim</span>, <span class="va">ylim</span>,</span>
@@ -187,9 +190,13 @@ function <code><a href="../reference/chmAddUMAP.html">chmAddUMAP()</a></code>. S
 PCA, TSNE, etc. See the “Add Scatter Plot Coordinates” section on the <a href="../reference/index.html#add-scatter-plot-coordinates">Function
 Reference</a> page for more details. UMAP coordinates can also be added
 in a fashion similar to the TP53 mutation state.</p>
+<!-- Don't evaluate in order to avoid messages from chmExportToHTML (that can seemingly only
+     be hidden with `invisible()`. The code block at the end of the vignette adds the umap
+     covariate and generates the embedded NGCHM
+-->
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmAddUMAP.html">chmAddUMAP</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"column"</span>, <span class="va">umap_data</span><span class="op">)</span></span></code></pre></div>
-<p><a href="#">Back to top</a></p>
+<code class="sourceCode R"><span><span class="va">hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/chmAddUMAP.html">chmAddUMAP</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"column"</span>, <span class="va">umap_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/chmExportToHTML-method.html">chmExportToHTML</a></span><span class="op">(</span><span class="va">hm</span>, <span class="st">"umap.html"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># create HTML file of NG-CHM</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -198,10 +205,11 @@ in a fashion similar to the TP53 mutation state.</p>
 <!-- svg symbols taken from NG-CHM viewer:
      https://github.com/MD-Anderson-Bioinformatics/NG-CHM/blob/main/NGCHM/WebContent/icons.svg?short_path=fffa0d9
 -->
-<svg style="display:none;"><symbol id="icon-four-panels" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" viewbox="0 0 16 16"><rect x="0" y="0" width="8" height="8" fill="#e7fffc"></rect><rect x="8" y="0" width="8" height="8" fill="#ffe7e8"></rect><rect x="0" y="8" width="8" height="8" fill="#e7ffe9"></rect><rect x="8" y="8" width="8" height="8" fill="#fffbe7"></rect></symbol><symbol id="icon-gear" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-gear-fill" viewbox="0 0 16 16"><path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"></path></symbol><symbol id="icon-big-x" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 16 16"><path d="m0 0 1 0 7 7 7-7 1 0 0 1-7 7 7 7 0 1 -1 0-7-7-7 7-1 0 0-1 7-7-7-7z"></path></symbol></svg><p>NG-CHMs include several plugins, among them a 2D Scatter Plot to
-allow for interactive exploration of 2-dimensional data. Below are the
-steps to open this plugin and use it to explore the UMAP
-coordinates.</p>
+<svg style="display:none;"><symbol id="icon-four-panels" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" viewbox="0 0 16 16"><rect x="0" y="0" width="8" height="8" fill="#e7fffc"></rect><rect x="8" y="0" width="8" height="8" fill="#ffe7e8"></rect><rect x="0" y="8" width="8" height="8" fill="#e7ffe9"></rect><rect x="8" y="8" width="8" height="8" fill="#fffbe7"></rect></symbol><symbol id="icon-gear" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-gear-fill" viewbox="0 0 16 16"><path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"></path></symbol><symbol id="icon-big-x" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 16 16"><path d="m0 0 1 0 7 7 7-7 1 0 0 1-7 7 7 7 0 1 -1 0-7-7-7 7-1 0 0-1 7-7-7-7z"></path></symbol></svg><p>This section describes how to use the <a href="https://bioinformatics.mdanderson.org/public-software/ngchm/" class="external-link">NG-CHM
+Viewer</a> to explore the UMAP data interactively. NG-CHMs include
+several plugins, among them a 2D Scatter Plot to allow for interactive
+exploration of 2-dimensional data. Below are the steps to open this
+plugin and use it to explore the UMAP coordinates.</p>
 <p><em>It may be helpful to click the “Open NG-CHM in a New Tab” button
 below and follow these steps in the larger space of a new tab.</em></p>
 <ol style="list-style-type: decimal">
