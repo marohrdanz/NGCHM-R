@@ -17,8 +17,8 @@ Description: Next-Generation Clustered Heat Maps (NG-CHMs) allow for
     NG-CHM viewer. See Ryan MC, Stucky M, et al (2020)
     <doi:10.12688/f1000research.20590.2> for more details.
 License: GPL-3
-URL: https://md-anderson-bioinformatics.github.io/NGCHM-R/,
-    https://github.com/MD-Anderson-Bioinformatics/NGCHM-R
+URL: https://marohrdanz.github.io/NGCHM-R/,
+    https://github.com/maorhrdanz/NGCHM-R
 Depends:
     R (>= 3.5.0)
 Imports:
