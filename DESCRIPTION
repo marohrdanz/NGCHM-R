@@ -39,9 +39,6 @@ Suggests:
     testthat,
     umap,
     uwot
-Enhances:
-    NGCHMDemoData,
-    NGCHMSupportFiles
 Additional_repositories: https://MD-Anderson-Bioinformatics.r-universe.dev
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
