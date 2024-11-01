@@ -42,10 +42,10 @@ Suggests:
 Enhances:
     NGCHMDemoData,
     NGCHMSupportFiles
-Additional_repositories: https://marohrdanz.r-universe.dev
+Additional_repositories: https://MD-Anderson-Bioinformatics.r-universe.dev
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Collate:
     'internalFunctions.R'
     'allClasses.R'
