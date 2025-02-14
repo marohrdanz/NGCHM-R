@@ -77,7 +77,7 @@ reference:
       - chmTreeGaps
   # Pkgdown requires all non-internal functions be listed. But we don't want the full list to appear on this page.
   # By setting the title to "internal", we hide this list from the user
-  - title: internal
+  - title: 'All Functions'
     contents:
        - starts_with("")
 navbar:
